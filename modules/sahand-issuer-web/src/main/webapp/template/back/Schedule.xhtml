@@ -1,0 +1,67 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:cp="http://http://java.sun.com/jsf/composite/components/property"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+
+
+	<h:form>
+
+		<p:schedule value="#{scheduleAgent.eventModel}" editable="true"
+			widgetVar="myschedule" locale="en">
+
+			<p:ajax event="dateSelect" listener="#{scheduleAgent.onDateSelect}"
+				update="eventDetails" oncomplete="eventDialog.show()" />
+			<p:ajax event="eventSelect" listener="#{scheduleAgent.onEventSelect}"
+				update="eventDetails" oncomplete="eventDialog.show()" />
+			<p:ajax event="eventMove" listener="#{scheduleAgent.onEventMove}"
+				update="growl" />
+			<p:ajax event="eventResize" listener="#{scheduleAgent.onEventResize}"
+				update="growl" />
+
+		</p:schedule>
+
+		<p:dialog widgetVar="eventDialog"
+			header="#{messages['event.details']}" showEffect="clip"
+			hideEffect="clip">
+			<h:panelGrid id="eventDetails" columns="2">
+
+				<cp:input id="eventName" label="#{messages['event.name']}"
+					required="true">
+					 <p:autoComplete id="dd" dropdown="true" value="#{scheduleAgent.eventDetail}"  converter="eventInformation" 
+                    	completeMethod="#{scheduleAgent.completeEvent}" rendered="#{scheduleAgent.operation}"
+                    	var="l" itemLabel="#{l.subject}" itemValue="#{l}" />  
+					<p:inputText id="input" value="#{scheduleAgent.eventDetail}" rendered="#{!scheduleAgent.operation}"/>
+				</cp:input>
+
+				<cp:input id="title" label="#{messages['action.name']}"
+					required="true">
+					<p:inputText id="input" value="#{scheduleAgent.event.title}" />
+				</cp:input>
+
+				<cp:input id="fromDate" label="#{messages['action.fromDate']}"
+					required="true">
+					<p:calendar id="input" value="#{scheduleAgent.event.startDate}" pattern="MM/dd/yyyy HH:mm"  navigator="true"/>
+				</cp:input>
+
+				<cp:input id="toDate" label="#{messages['action.toDate']}"
+					required="true">
+					<p:calendar id="input" value="#{scheduleAgent.event.endDate}" pattern="MM/dd/yyyy HH:mm" navigator="true"/>
+				</cp:input>
+
+				
+			</h:panelGrid>
+			<p:commandButton type="reset" value="#{messages['reset']}" />
+			<p:commandButton value="#{messages['save']}"
+				actionListener="#{scheduleAgent.addEvent}"
+				oncomplete="myschedule.update();eventDialog.hide();" />
+		</p:dialog>
+
+	</h:form>
+
+
+</ui:composition>

@@ -1,0 +1,59 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+	
+	
+	
+
+	<h:form>
+	
+	
+		
+		<p:toolbar>
+			<p:toolbarGroup align="#{appearance.left}">
+			
+				<h:outputLink>
+					<h:outputText value="#{messages['shanli.acceptor']}" onclick="redirect(1)"/>
+					<f:param name="action" value="1" />
+				</h:outputLink>
+				<h:outputLink>
+					<h:outputText value="#{messages['shanli.holder']}" onclick="redirect(2)"/>
+					<f:param name="action" value="2" />
+				</h:outputLink>
+				<h:outputLink>
+					<h:outputText value="#{messages['payment.acceptor']}" onclick="redirect(3)"/>
+					<f:param name="action" value="3" />
+				</h:outputLink>
+				<h:outputLink>
+					<h:outputText value="#{messages['booking.system']}" onclick="redirect(4)"/>
+					<f:param name="action" value="4" />
+				</h:outputLink>
+				<h:outputLink>
+					<h:outputText value="#{messages['reporting']}" onclick="redirect(5)"/>
+					<f:param name="action" value="5" />
+				</h:outputLink>
+				
+		
+			</p:toolbarGroup>
+
+			<p:divider />
+			<p:toolbarGroup align="#{appearance.right}">
+				<!-- <h:outputText value="#{messages['welcome']}"
+					rendered="#{identity.loggedIn}" /> -->
+
+				<p:menuButton>
+					<p:menuitem value="#{messages['home']}" url="/home.xhtml" />
+					<p:menuitem value="#{messages['logout']}"
+						action="#{identity.logout}" rendered="#{identity.loggedIn}"
+						ajax="false" />
+				</p:menuButton>
+			</p:toolbarGroup>
+		</p:toolbar>
+
+	</h:form>
+</ui:composition>

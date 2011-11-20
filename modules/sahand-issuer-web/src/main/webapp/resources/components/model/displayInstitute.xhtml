@@ -1,0 +1,35 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:p="http://http://java.sun.com/jsf/composite/components/property"
+   xmlns:cc="http://java.sun.com/jsf/composite"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html">
+
+   <cc:interface>
+      <cc:attribute name="value" required="true"/>
+      <cc:attribute name="showEmail" required="false" default="false"/>
+   </cc:interface>
+
+   <cc:implementation>
+      <p:output label="#{messages['institute.name']}" value="#{cc.attrs.value.name}"/>
+      <p:output label="#{messages['institute.phone']}" value="#{cc.attrs.value.phone}" />
+      <p:output label="#{messages['institute.mobile']}" value="#{cc.attrs.value.cellPhone}" />
+      <p:output label="#{messages['institute.email']}" value="#{cc.attrs.value.email}" />
+      <p:output label="#{messages['institute.address']}" value="#{cc.attrs.value.address}" />
+      
+      <!-- by morex -->
+      
+      <p:output label="#{messages['institute.url']}" value="#{cc.attrs.value.url}"/>
+      <p:output label="#{messages['institute.latinAddress']}" value="#{cc.attrs.value.latinAddress}"/>
+      <p:output label="#{messages['institute.latinName']}" value="#{cc.attrs.value.latinName}"/>
+      <br/>
+      <h:outputText value="#{messages['institute.AccountInfo']}" />
+      <br/>
+      <p:output label="#{messages['institute.AccountNumber']}" value="#{cc.attrs.value.account.accountNumber}"/>
+      <p:output label="#{messages['institute.AccountTitle']}" value="#{cc.attrs.value.account.title}"/>
+            
+   </cc:implementation>
+
+</ui:composition>

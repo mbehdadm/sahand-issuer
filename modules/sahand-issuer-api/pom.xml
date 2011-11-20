@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+ <parent>
+    <artifactId>sahand-issuer</artifactId>
+    <groupId>com.sahand.issuer</groupId>
+    <version>2.0.0.Final</version>
+    <relativePath>../../pom.xml</relativePath>
+  </parent>
+  <artifactId>sahand-issuer-api</artifactId>
+  <name>Issuer Api</name>
+  <packaging>jar</packaging>
+  <url>http://tss-dev.com</url>
+
+
+	 <dependencies>
+	 	  
+      <dependency>
+		<groupId>com.sahand.common.util</groupId>
+		<artifactId>sahand-common-util</artifactId>
+		<version>${sahand-common.version}</version>
+	  </dependency>
+	  
+	 </dependencies>
+
+</project>

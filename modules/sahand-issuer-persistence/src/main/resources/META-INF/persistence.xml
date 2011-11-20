@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" 
+    version="2.0">
+    <persistence-unit name="pu-security-system">
+        <jta-data-source>java:jboss/datasources/securityDS</jta-data-source>
+        <!-- <mapping-file>META-INF/booking-orm.xml</mapping-file> -->
+        <properties>
+            <!-- Properties for Hibernate (default provider for JBoss AS) -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.show_sql" value="true" />
+        </properties>
+    </persistence-unit>
+</persistence>

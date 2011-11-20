@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE datasources
+    PUBLIC "-//JBoss//DTD JBOSS JCA Config 1.5//EN"
+    "http://www.jboss.org/j2ee/dtd/jboss-ds_1_5.dtd">
+<datasources>
+    <local-tx-datasource>
+        <jndi-name>java:jboss/datasources/securityDS</jndi-name>
+        <use-java-context>false</use-java-context>
+        <connection-url>jdbc:oracle:thin:@192.168.7.80:1521:SORCL</connection-url>
+        <driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+        <user-name>TSTVCH4</user-name>
+        <password>TSTVCH4</password>
+        <min-pool-size>5</min-pool-size>
+        <max-pool-size>20</max-pool-size>
+    </local-tx-datasource>
+</datasources>

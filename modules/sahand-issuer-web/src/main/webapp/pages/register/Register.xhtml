@@ -1,0 +1,45 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="#{theme.personTemplate}">
+
+
+	<ui:define name="content">
+		<h:form>
+
+			<p:panel header="#{messages['member.register']}"
+				styleClass="panelNoBorder">
+				<h:panelGrid columns="2" columnClasses="column" cellpadding="5">
+					<h:outputText value="#{messages['person.name']}" />
+					<h:outputText value="#{person.fullName}" />
+
+					<h:outputText value="#{messages['person.gender']}" />
+					<h:outputText value="#{person.gender}" />
+
+					<h:outputText value="#{messages['person.birthday']}" />
+					<h:outputText value="#{person.birthday}" />
+
+					<h:outputText value="#{messages['person.phone']}" />
+					<h:outputText value="#{person.phone}" />
+
+					<h:outputText value="#{messages['person.mobile']}" />
+					<h:outputText value="#{person.mobile}" />
+
+					<h:outputText value="#{messages['person.email']}" />
+					<h:outputText value="#{person.email}" />
+
+					<h:outputText value="#{messages['person.home.address']}" />
+					<h:outputText value="#{person.homeAddress}" />
+
+				</h:panelGrid>
+			</p:panel>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>

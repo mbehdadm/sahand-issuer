@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>sahand-issuer</artifactId>
+		<groupId>com.sahand.issuer</groupId>
+		<version>2.0.0.Final</version>
+	</parent>
+	<groupId>com.sahand.issuer</groupId>
+	<artifactId>sahand-issuer-product</artifactId>
+	<version>2.0.0.Final</version>
+	<packaging>ear</packaging>
+	<name>Issuer Product</name>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.sahand.issuer</groupId>
+			<artifactId>sahand-issuer-service</artifactId>
+			<version>${sahand-issuer.version}</version>
+			<type>ejb</type>
+		</dependency>
+
+	</dependencies>
+
+
+	<build>
+		<plugins>
+			<!-- <plugin>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<finalName>${project.artifactId}</finalName>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+						<manifestEntries>
+							<Class-Path>/lib</Class-Path>
+						</manifestEntries>
+					</archive>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<generateApplicationXml>true</generateApplicationXml>
+				</configuration>
+			</plugin> -->
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jboss-maven-plugin</artifactId>
+				<configuration>
+					<jbossHome>\\192.168.7.157\jboss-6.1.0.Final</jbossHome>
+					<serverName>default</serverName>
+					<fileNames>
+						<fileName>${project.build.directory}/${project.artifactId}.ear</fileName>
+					</fileNames>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -1,0 +1,77 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:cp="http://http://java.sun.com/jsf/composite/components/property"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+
+
+	<h:panelGrid columns="2" columnClasses="column" cellpadding="5">
+	
+	
+		<cp:input id="name" label="#{messages['person.name']}" required="true">
+            <p:inputText id="input" value="#{currentUser.information.latinName}"/>
+        </cp:input>
+        <h:panelGrid columns="2">
+					<h:outputLabel value="#{messages['person.gender']}" class="entry"/>
+					<p:autoComplete id="lg1" dropdown="true"
+						value="#{currentUser.information.genderDto}"
+						var="l" itemLabel="#{l.description}" itemValue="#{l}" 
+						converter="gender" forceSelection="true"
+						completeMethod="#{lookupLoader.getTag('Gender')}" />
+				</h:panelGrid>
+        
+      <!--   <cp:input id="gender" label="#{messages['person.gender']}" >
+       		<p:autoComplete id="lg" dropdown="true"
+						value="#{currentUser.information.genderDto}"
+						var="l" itemLabel="#{l.description}" itemValue="#{l}" 
+						converter="gender" forceSelection="true"
+						completeMethod="#{lookupLoader.getTag('Gender')}" />
+        </cp:input> -->
+        <cp:input id="birthday" label="#{messages['person.birthday']}">
+            <p:calendar id="input" value="#{currentUser.information.birthday}"/>
+        </cp:input>
+        <cp:input id="phone" label="#{messages['person.phone']}">
+            <p:inputText id="input" value="#{currentUser.information.homeTel}"/>
+        </cp:input>
+        <cp:input id="mobile" label="#{messages['person.mobile']}">
+            <p:inputText id="input" value="#{currentUser.information.cellPhone}"/>
+        </cp:input>
+        <cp:input id="email" label="#{messages['person.email']}">
+            <p:inputText id="input" value="#{currentUser.information.email}"/>
+        </cp:input>
+        <cp:input id="address" label="#{messages['person.home.address']}">
+           <p:inputTextarea value="#{currentUser.information.homeAddress}"
+			style="width:300px;height:100px;" effectDuration="400" />
+        </cp:input>
+		<!-- <h:outputText value="#{messages['person.name']}" />
+		<p:inputText value="#{currentUser.information.latinName}" required="true" />
+
+		<h:outputText value="#{messages['person.gender']}" />
+		<p:inputText value="#{currentUser.information.gender}" />
+
+		<h:outputText value="#{messages['person.birthday']}" />
+		<p:calendar value="#{currentUser.information.birthday}" />
+
+		<h:outputText value="#{messages['person.phone']}" />
+		<p:inputText value="#{currentUser.information.homeTel}" />
+
+		<h:outputText value="#{messages['person.mobile']}" />
+		<p:inputText value="#{currentUser.information.cellPhone}" />
+
+		<h:outputText value="#{messages['person.email']}" />
+		<p:inputText value="#{currentUser.information.email}" />
+
+		<h:outputText value="#{messages['person.home.address']}" />
+		<p:inputTextarea value="#{currentUser.information.homeAddress}"
+			style="width:300px;height:100px;" effectDuration="400" /> -->
+
+		
+	</h:panelGrid>
+        <!--  <s:validateForm validatorId="reservationDateRange" fields="startDateElement=checkInDate:input endDateElement=checkOutDate:input" /> -->
+		
+
+</ui:composition>

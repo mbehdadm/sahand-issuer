@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>sahand-issuer</artifactId>
+    <groupId>com.sahand.issuer</groupId>
+    <version>2.0.0.Final</version>
+    <relativePath>../../pom.xml</relativePath>
+  </parent>
+  <artifactId>sahand-issuer-web</artifactId>
+  <version>2.0.0.Final</version>
+   <packaging>war</packaging>
+   <name>Issuer Web</name>
+   <url>http://tss-dev.com</url>
+  
+  
+  <properties>
+  
+  	  <version.jboss.javaee-web6.bom>2.0.0.Final</version.jboss.javaee-web6.bom>
+      <jboss.home>\\192.168.7.157\jboss-6.1.0.Final</jboss.home> 
+      <jboss.domain>default</jboss.domain>
+      <!--
+         Explicitly declaring the source encoding eliminates the following message:
+         [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+      -->
+      <!-- The version of Weld extensions in use -->
+      <weld.extensions.version>1.0.0-CR2</weld.extensions.version>
+      <!-- <weld.extensions.version>1.1.3.SP1</weld.extensions.version> -->
+      
+      <seam.international.version>3.1.0.Beta4</seam.international.version>
+      <seam.solder.version>3.1.0.Beta4</seam.solder.version>
+      <seam.security.version>3.1.0.Beta4</seam.security.version>
+      <seam.catch.version>3.1.0.Beta4</seam.catch.version>
+      <seam.faces.version>3.1.0.Beta4</seam.faces.version>
+      <seam.remoting.version>3.1.0.Beta4</seam.remoting.version>
+
+      <!-- <primefaces.version>3.0.RC1-SNAPSHOT</primefaces.version> -->
+      <primefaces.version>3.0.M4</primefaces.version>
+      <primefaces.theme.version>1.0.2</primefaces.theme.version>
+      
+      <hiberbate.validator.version>4.2.0.Final</hiberbate.validator.version>
+      
+      <joda-time.version>1.6</joda-time.version>
+      <prettyfaces.version>3.3.2</prettyfaces.version>
+
+   </properties>
+
+
+   <dependencyManagement>
+      <dependencies>
+      
+        <!-- Define the version of JBoss' Java EE 6 APIs we want to import. 
+            Any dependencies from org.jboss.spec will have their version defined by this 
+            BOM -->
+         <!-- JBoss distributes a complete set of Java EE 6 APIs including 
+            a Bill of Materials (BOM). A BOM specifies the versions of a "stack" (or 
+            a collection) of artifacts. We use this here so that we always get the correct 
+            versions of artifacts. Here we use the jboss-javaee-web-6.0 stack (you can 
+            read this as the JBoss stack of the Java EE Web Profile 6 APIs), and we use 
+            version 2.0.0.Beta1 which is the latest release of the stack. You can actually 
+            use this stack with any version of JBoss AS that implements Java EE 6, not 
+            just JBoss AS 7! -->
+         <dependency>
+            <groupId>org.jboss.spec</groupId>
+            <artifactId>jboss-javaee-web-6.0</artifactId>
+            <version>${version.jboss.javaee-web6.bom}</version>
+            <type>pom</type>
+            <scope>import</scope>
+         </dependency>
+        <!--  <dependency>
+            <groupId>org.jboss.spec</groupId>
+            <artifactId>jboss-javaee6-specs-bom</artifactId>
+            <version>${version.jboss.javaee6.bom}</version>
+            <type>pom</type>
+            <scope>import</scope>
+         </dependency> -->
+         
+        <!--  Import scope will provide versions for dependencies below. -->
+        <!--  <dependency>
+            <groupId>org.jboss.weld</groupId>
+            <artifactId>weld-extensions-bom</artifactId>
+            <version>${weld.extensions.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+         </dependency> -->
+      </dependencies>
+   </dependencyManagement>
+
+   <dependencies>
+      	<dependency>
+      		<groupId>com.sahand.issuer</groupId>
+      	 	<artifactId>sahand-issuer-api</artifactId>
+		 	<version>${sahand-issuer.version}</version>
+		 	<type>jar</type>
+      	</dependency>
+   
+	   <dependency>
+      		<groupId>com.sahand.issuer</groupId>
+      	 	<artifactId>sahand-issuer-proxy</artifactId>
+		 	<version>${sahand-issuer.version}</version>
+		 	<type>jar</type>
+      	</dependency>
+		
+		<dependency>
+			<groupId>com.sun.xml.ws</groupId>
+			<artifactId>jaxws-rt</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.ocpsoft</groupId>
+			<artifactId>prettyfaces-jsf2</artifactId>
+			<version>${prettyfaces.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.jboss.solder</groupId>
+			<artifactId>solder-impl</artifactId>
+			<version>${seam.solder.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.seam.security</groupId>
+			<artifactId>seam-security</artifactId>
+			<version>${seam.security.version}</version>
+			<!-- <exclusions>
+				<exclusion>
+					<artifactId>seam-solder</artifactId>
+					<groupId>org.jboss.seam.solder</groupId>
+				</exclusion>
+			</exclusions> -->
+		</dependency>
+		<!-- <dependency>
+			<groupId>org.jboss.seam.catch</groupId>
+			<artifactId>seam-catch</artifactId>
+			<version>${seam.catch.version}</version>
+		</dependency> -->
+		<dependency>
+			<groupId>org.jboss.seam.remoting</groupId>
+			<artifactId>seam-remoting</artifactId>
+			<version>${seam.remoting.version}</version>
+			<!-- <exclusions>
+				<exclusion>
+					<artifactId>seam-solder</artifactId>
+					<groupId>org.jboss.seam.solder</groupId>
+				</exclusion>
+			</exclusions> -->
+		</dependency>
+		<dependency>
+         	<groupId>org.jboss.seam.faces</groupId>
+         	<artifactId>seam-faces</artifactId>
+			<version>${seam.faces.version}</version>
+			<!-- <exclusions>
+				<exclusion>
+				    <artifactId>seam-solder-parent</artifactId>
+				    <groupId>org.jboss.seam.solder</groupId>
+				</exclusion>				
+			</exclusions> -->
+      </dependency>
+		<dependency>
+			<groupId>org.jboss.seam.international</groupId>
+			<artifactId>seam-international</artifactId>
+			<version>${seam.international.version}</version>
+			<!-- <exclusions>
+				<exclusion>
+				    <artifactId>seam-solder-parent</artifactId>
+				    <groupId>org.jboss.seam.solder</groupId>
+				</exclusion>				
+			</exclusions> -->
+		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>${joda-time.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>${primefaces.version}</version>
+		</dependency>
+		
+      
+      <!-- Bean Validation (JSR-303) -->
+      <dependency>
+         <groupId>javax.validation</groupId>
+         <artifactId>validation-api</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      
+      <!-- Common to JEE and Servlet containers -->
+      <dependency>
+         <groupId>javax.enterprise</groupId>
+         <artifactId>cdi-api</artifactId>
+         <scope>provided</scope>
+      </dependency>
+
+     <!--  <dependency>
+         <groupId>javax.annotation</groupId>
+         <artifactId>jsr250-api</artifactId>
+         <scope>provided</scope>
+      </dependency> -->
+      
+        <!-- Import the Common Annotations API (JSR-250), we use provided scope 
+         as the API is included in JBoss AS 7 -->
+      <dependency>
+         <groupId>org.jboss.spec.javax.annotation</groupId>
+         <artifactId>jboss-annotations-api_1.1_spec</artifactId>
+         <scope>provided</scope>
+      </dependency>
+
+      <!-- Import the JSF API, we use provided scope as the API is included 
+         in JBoss AS 7 -->
+      <dependency>
+         <groupId>org.jboss.spec.javax.faces</groupId>
+         <artifactId>jboss-jsf-api_2.0_spec</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.spec.javax.servlet</groupId>
+         <artifactId>jboss-servlet-api_3.0_spec</artifactId>
+         <!-- <version>1.0.0.Final</version> -->
+         <scope>provided</scope>
+      </dependency>
+
+      <!-- JSF 2.0 API -->
+     <!--  <dependency>
+         <groupId>javax.faces</groupId>
+         <artifactId>jsf-api</artifactId>
+      </dependency> -->
+
+      <!-- Optional, but pretty useful. -->
+      <!--
+         <dependency> <groupId>javax.servlet</groupId> <artifactId>jstl</artifactId> </dependency>
+      -->
+
+      <!-- Optional, but highly recommended. -->
+      <dependency>
+         <groupId>org.testng</groupId>
+         <artifactId>testng</artifactId>
+         <version>5.10</version>
+         <scope>test</scope>
+         <classifier>jdk15</classifier>
+      </dependency>
+
+      <!-- Jetty/Tomcat-specific scopes and artifacts -->
+
+      <!-- JSF 2.0 -->
+      <!-- <dependency>
+         <groupId>javax.faces</groupId>
+         <artifactId>jsf-impl</artifactId>
+         <scope>runtime</scope>
+      </dependency> -->
+
+     <!--  <dependency>
+         <groupId>org.jboss.weld.servlet</groupId>
+         <artifactId>weld-servlet</artifactId>
+         <scope>runtime</scope>
+      </dependency> -->
+
+      <!-- end Jetty/Tomcat-specific scopes and artifacts -->
+
+      <!-- Bean Validation API (JSR 303) -->
+     <!--  <dependency>
+         <groupId>javax.validation</groupId>
+         <artifactId>validation-api</artifactId>
+      </dependency> -->
+
+      <!-- Bean Validation Implementation -->
+      <!-- Provides portable constraints such as @NotEmpty, @Email and @Url -->
+      <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-validator</artifactId>
+         <version>${hiberbate.validator.version}</version>
+         <exclusions>
+         	<exclusion>
+         		<artifactId>jaxb-api</artifactId>
+         		<groupId>javax.xml.bind</groupId>
+         	</exclusion>
+         	<exclusion>
+         		<artifactId>jaxb-impl</artifactId>
+         		<groupId>com.sun.xml.bind</groupId>
+         	</exclusion>
+         </exclusions>
+      </dependency>
+      
+      
+        <!-- Bean Validation (JSR-303) -->
+     <!--  <dependency>
+         <groupId>javax.validation</groupId>
+         <artifactId>validation-api</artifactId>
+         <scope>provided</scope>
+      </dependency> -->
+      <!-- Bean Validation Implementation -->
+      <!-- Provides portable constraints such as @NotEmpty, @Email and @Url -->
+      <!-- Hibernate Validator is only the JSR-303 implementation at the moment, so we can assume it's provided -->
+    <!--   <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-validator</artifactId>
+         <version>4.0.0.GA</version>
+         <scope>provided</scope>
+      </dependency> -->
+      <!-- JSF -->
+      <!-- <dependency>
+         <groupId>javax.faces</groupId>
+         <artifactId>jsf-api</artifactId>
+         <scope>provided</scope>
+      </dependency> -->
+      <!-- JPA -->
+     <!--  <dependency>
+         <groupId>javax.persistence</groupId>
+         <artifactId>persistence-api</artifactId>
+         <scope>provided</scope>
+      </dependency> -->
+      
+   <!--       <dependency>
+            <groupId>com.ocpsoft</groupId>
+            <artifactId>ocpsoft-pretty-time</artifactId>
+            <version>1.0.6</version>
+        </dependency> -->
+
+        
+     <!--    <dependency>
+        	<groupId>commons-io</groupId>
+        	<artifactId>commons-io</artifactId>
+        	<version>2.0.1</version>
+        	<version>1.4</version>
+        </dependency>
+        <dependency>
+	     	<groupId>commons-fileupload</groupId>
+	      	<artifactId>commons-fileupload</artifactId>
+	      	<version>1.2.2</version>
+	      	<version>1.2.1</version>
+	    </dependency> -->
+        
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>dot-luv</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<!-- <dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>aristo</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>black-tie</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>blitzer</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>bluesky</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>casablanca</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>cupertino</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>dark-hive</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>eggplant</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>excite-bike</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>flick</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>glass-x</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>hot-sneaks</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>humanity</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>le-frog</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>midnight</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>mint-choc</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>overcast</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>pepper-grinder</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>redmond</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>rocket</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>smoothness</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>south-street</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>start</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>sunny</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>swanky-purse</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>trontastic</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>ui-darkness</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>ui-lightness</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency> 
+		<dependency>  
+		    <groupId>org.primefaces.themes</groupId>  
+		    <artifactId>vader</artifactId>  
+			<version>${primefaces.theme.version}</version>
+		</dependency>  -->
+   </dependencies>
+
+   <build>
+      <finalName>${project.artifactId}</finalName>
+      <plugins>
+       <!-- <plugin>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>2.1.1</version>
+            <configuration>
+               Java EE 6 doesn't require web.xml, Maven needs to catch 
+                  up!
+               <failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
+         </plugin> -->
+         <!-- Compiler plugin enforces Java 1.5 compatibility -->
+        <!--  <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+               <source>1.6</source>
+               <target>1.6</target>
+            </configuration>
+            
+         </plugin> -->
+
+         <!-- Eclipse plugin - download source and JavaDoc jars automatically -->
+        <!--  <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-eclipse-plugin</artifactId>
+            <configuration>
+               <wtpversion>2.0</wtpversion>
+               <downloadSources>true</downloadSources>
+               <downloadJavadocs>true</downloadJavadocs>
+            </configuration>
+         </plugin> -->
+
+       
+       	<plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>jboss-maven-plugin</artifactId>
+            <configuration>
+               <jbossHome>${jboss.home}</jbossHome>
+               <serverName>${jboss.domain}</serverName>
+               <fileNames>
+                  <fileName>${project.build.directory}/${project.build.finalName}.war</fileName>
+               </fileNames> 
+            </configuration>
+         </plugin>
+         
+         <plugin>
+			<groupId>org.jboss.as.plugins</groupId>
+			<artifactId>jboss-as-maven-plugin</artifactId>
+			<version>7.0.0.Final</version>
+			<configuration>
+	
+				<!-- <filename>${project.artifactId}.ear</filename> -->
+				<hostname>192.168.7.157</hostname>
+			</configuration>
+		</plugin>
+      </plugins>
+   </build>
+   
+</project>

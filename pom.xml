@@ -1,0 +1,73 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>sahand-core</artifactId>
+		<groupId>com.sahand.core</groupId>
+		<version>1.0.1.Final</version>
+	</parent>
+	<groupId>com.sahand.issuer</groupId>
+	<artifactId>sahand-issuer</artifactId>
+	<version>2.0.0.Final</version>
+	<packaging>pom</packaging>
+	<name>Issuer Configuration</name>
+	<description>xxxx</description>
+	<url>http://tss-dev.com</url>
+	<inceptionYear>2011</inceptionYear>
+
+	<licenses>
+		<license>
+			<name>Apache 2</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>A business-friendly OSS license</comments>
+		</license>
+	</licenses>
+
+	<organization>
+		<name>Sahand Samaneh</name>
+		<url>http://tss-dev.com</url>
+	</organization>
+
+	<developers>
+		<developer>
+			<id></id>
+			<name></name>
+			<email></email>
+			<organization>SahandCo</organization>
+			<organizationUrl>http://tss-dev.com</organizationUrl>
+			<roles>
+				<role>architect</role>
+				<role>lead developer</role>
+			</roles>
+			<timezone>+3:30</timezone>
+			<properties>
+				<picUrl>http://goo.gl/xV2K8</picUrl>
+			</properties>
+		</developer>
+	</developers>
+
+
+
+	<modules>
+		<module>modules/sahand-issuer-api</module>
+		<module>modules/sahand-issuer-persistence</module>
+		<module>modules/sahand-issuer-proxy</module>
+		<module>modules/sahand-issuer-service</module>
+		<module>modules/sahand-issuer-web</module>
+		<module>product</module>
+	</modules>
+
+	<properties>
+		<cdi.version>1.0-SP4</cdi.version>
+		<ejb.version>3.1.0</ejb.version>
+		<hibernate.version>4.2.0.Final</hibernate.version>
+		<persistence.version>1.0</persistence.version>
+		
+		<sahand-issuer.version>2.0.0.Final</sahand-issuer.version>
+		<sahand-common.version>2.0.0.Final</sahand-common.version>
+
+		<jbossHome>\\192.168.7.157\jboss-6.1.0.Final</jbossHome>
+		<jbossDomain>default</jbossDomain>
+	</properties>
+</project>

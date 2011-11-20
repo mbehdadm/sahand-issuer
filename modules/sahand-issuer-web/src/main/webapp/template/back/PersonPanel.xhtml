@@ -1,0 +1,125 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+
+	<h:form>
+		<p:panel styleClass="noBorder">
+
+			<!-- <p:lightBox> -->
+			<h:outputLink value="#" onclick="pictureDialog.show();">
+				<p:graphicImage value="#{currentUser.information.pictureContent}"
+					id="personImage" height="126" width="200" />
+			</h:outputLink>
+
+			<!-- 	<f:facet name="inline">
+					<p:graphicImage value="#{currentUser.information.picture}"
+						id="personImageCrop" />
+					<h:panelGrid columns="2">
+					<h:form>
+					<p:imageCropper value="#{memberAgent.croppedImage}"
+							image="#{currentUser.information.picture}"  />
+					</h:panelGrid>
+
+					<p:commandButton value="#{messages['crop.picture']}"
+						action="#{memberAgent.crop}" update="personImage" />
+						</h:form>
+				</f:facet> -->
+			<!-- </p:lightBox> -->
+
+			<br />
+
+			<p:menu styleClass="noBorder">
+				<p:menuitem value="#{messages['menu.wall']}"
+					action="/PersonHome.xhtml" ajax="false" icon="ui-icon ui-icon-disk" />
+
+				<p:menuitem value="#{messages['menu.info']}"
+					action="/pages/member/Info.xhtml" ajax="false"
+					icon="ui-icon ui-icon-disk" />
+			</p:menu>
+			<p:menu type="tiered" styleClass="noBorder">
+				<p:submenu label="#{messages['menu.member.classes']}"
+					icon="ui-icon ui-icon-class">
+					<p:menuitem value="#{messages['menu.member.register.classes']}"
+						action="/pages/class/MemberClass.xhtml"
+						icon="ui-icon ui-icon-disk" ajax="false">
+						<f:setPropertyActionListener target="#{actionAgent.action}"
+							value="Register" />
+					</p:menuitem>
+					<p:menuitem value="#{messages['menu.member.attendance.classes']}"
+						action="/pages/class/MemberClass.xhtml"
+						icon="ui-icon ui-icon-disk" ajax="false">
+						<f:setPropertyActionListener target="#{actionAgent.action}"
+							value="Attendance" />
+					</p:menuitem>
+				</p:submenu>
+			</p:menu>
+			<p:menu styleClass="noBorder">
+
+				<!-- 	<p:menuitem value="#{messages['menu.member.classes']}"
+					action="/pages/class/MemberClass.xhtml" icon="ui-icon ui-icon-disk"
+					ajax="false" /> -->
+
+				<p:menuitem value="#{messages['menu.member.register']}"
+					action="/pages/register/Register.xhtml" ajax="false"
+					icon="ui-icon ui-icon-disk" />
+
+				<p:menuitem value="#{messages['menu.setting']}"
+					onclick="settingDialog.show();" icon="ui-icon ui-icon-disk" />
+			</p:menu>
+
+		</p:panel>
+		<ui:include src="/Setting.xhtml" />
+
+
+
+	</h:form>
+
+	<!-- <p:dialog header="#{messages['appearance.setting']}" widgetVar="settingDialog"
+		maximizable="true" minimizable="true">
+		<h:form>
+
+			<p:fieldset legend="#{messages['appearance.lang']}" toggleable="true"
+				toggleSpeed="500">
+
+				<h:panelGrid columns="2">
+					<h:outputLabel value="#{messages['appearance.lang']}" for="lg" />
+					<p:autoComplete id="lg" dropdown="true"
+						value="#{localeSwitcher.currentLanguage}" converter="language" forceSelection="true"
+						completeMethod="#{localeSwitcher.complete}" />
+				</h:panelGrid>
+
+				<p:commandButton value="#{messages['appearance.change']}"
+					action="#{localeSwitcher.change}" ajax="false"
+					oncomplete="settingDialog.hide()">
+				</p:commandButton>
+			</p:fieldset>
+
+		</h:form>
+	</p:dialog> -->
+
+	<p:dialog widgetVar="pictureDialog" maximizable="true"
+		minimizable="true">
+		<h:form>
+
+			<h:panelGrid columns="2">
+
+				<p:imageCropper value="#{fileUploader.croppedImage}"
+					image="#{fileUploader.image}" initialCoords="25,5,30,25" />
+				<p:commandButton value="#{messages['crop.picture']}"
+					action="#{fileUploader.crop}" update="personImage" />
+			</h:panelGrid>
+
+			<p:fileUpload fileUploadListener="#{fileUploader.upload}"
+				allowTypes="*.jpg;*.bmp;*.png;*.gif" />
+
+
+
+		</h:form>
+	</p:dialog>
+
+</ui:composition>
