@@ -14,5 +14,25 @@
 	<packaging>ejb</packaging>
 	<url>http://tss-dev.com</url>
 
-
+	
+	
+		
+	 <dependencies>
+	 	<dependency>
+			<groupId>com.sahand.issuer</groupId>
+			<artifactId>sahand-issuer-api</artifactId>
+			<version>${sahand-issuer.version}</version>
+			<type>jar</type>
+		</dependency>
+	 
+	 	<dependency>
+			<groupId>com.sahand.issuer</groupId>
+			<artifactId>sahand-issuer-persistence</artifactId>
+			<version>${sahand-issuer.version}</version>
+			<type>ejb</type>
+		</dependency>
+		
+     
+   </dependencies>
+	
 </project>

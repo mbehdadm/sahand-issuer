@@ -14,6 +14,136 @@
   <url>http://tss-dev.com</url>
   
 
+	<dependencies>
+	
+		<dependency>
+			<groupId>com.sahand.acquirer</groupId>
+			<artifactId>sahand-acquirer-persistence</artifactId>
+			<version>${sahand-acquirer.version}</version>
+			<type>ejb</type>
+		</dependency>
+		
+	   <dependency>
+			<groupId>com.sahand.common.util</groupId>
+			<artifactId>sahand-common-util</artifactId>
+			<version>${sahand-common.version}</version>
+	  </dependency>
+	  
+	   <dependency>
+         <groupId>org.jboss.spec.javax.annotation</groupId>
+         <artifactId>jboss-annotations-api_1.1_spec</artifactId>
+      </dependency>
+      <!-- JavaEE 6 requires Connector API 1.6 -->
+      <!-- <dependency>
+         <groupId>org.jboss.spec.javax.resource</groupId>
+         <artifactId>jboss-connector-api_1.5_spec</artifactId>
+      </dependency> -->
+      <dependency>
+         <groupId>org.jboss.spec.javax.ejb</groupId>
+         <artifactId>jboss-ejb-api_3.1_spec</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.spec.javax.el</groupId>
+         <artifactId>jboss-el-api_2.2_spec</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.spec.javax.interceptor</groupId>
+         <artifactId>jboss-interceptors-api_1.1_spec</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.spec.javax.security.jacc</groupId>
+         <artifactId>jboss-jacc-api_1.4_spec</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.spec.javax.enterprise.deploy</groupId>
+         <artifactId>jboss-jad-api_1.2_spec</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.spec.javax.security.auth.message</groupId>
+         <artifactId>jboss-jaspi-api_1.0_spec</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.spec.javax.xml.registry</groupId>
+         <artifactId>jboss-jaxr-api_1.0_spec</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.spec.javax.jms</groupId>
+         <artifactId>jboss-jms-api_1.1_spec</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.spec.javax.servlet.jsp</groupId>
+         <artifactId>jboss-jsp-api_2.2_spec</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.spec.javax.servlet</groupId>
+         <artifactId>jboss-servlet-api_3.0_spec</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.spec.javax.transaction</groupId>
+         <artifactId>jboss-transaction-api_1.1_spec</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.spec.javax.xml.bind</groupId>
+         <artifactId>jboss-jaxb-api_2.2_spec</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.spec.javax.xml.rpc</groupId>
+         <artifactId>jboss-jaxrpc-api_1.1_spec</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.spec.javax.xml.soap</groupId>
+         <artifactId>jboss-saaj-api_1.3_spec</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.spec.javax.xml.ws</groupId>
+         <artifactId>jboss-jaxws-api_2.2_spec</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>javax.activation</groupId>
+         <artifactId>activation</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>javax.enterprise</groupId>
+         <artifactId>cdi-api</artifactId>
+      </dependency>
+     <!--  <dependency>
+         <groupId>com.sun.faces</groupId>
+         <artifactId>jsf-api</artifactId>
+      </dependency> -->
+      <dependency>
+         <groupId>javax.inject</groupId>
+         <artifactId>javax.inject</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>javax.jws</groupId>
+         <artifactId>jsr181-api</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>javax.mail</groupId>
+         <artifactId>mail</artifactId>
+      </dependency>
+      <!-- <dependency>
+         <groupId>javax.servlet</groupId>
+         <artifactId>jstl</artifactId>
+      </dependency> -->
+      <dependency>
+         <groupId>org.hibernate.javax.persistence</groupId>
+         <artifactId>hibernate-jpa-2.0-api</artifactId>
+      </dependency>
+      <!-- <dependency>
+         <groupId>org.jboss.resteasy</groupId>
+         <artifactId>jaxrs-api</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>stax</groupId>
+         <artifactId>stax-api</artifactId>
+      </dependency> -->
+      <dependency>
+         <groupId>javax.validation</groupId>
+         <artifactId>validation-api</artifactId>
+      </dependency>
+	  
+	</dependencies>
 
 
 </project>

@@ -23,17 +23,17 @@ public class RedirectManagment {
 			String action = "/home.xhtml";
 			switch (number) {
 			
-			case 0:  action = SecurityConfigLoader.getValue("credit.acceptor") ; break;
+			case 0:  action = IssuerConfigLoader.getValue("credit.acceptor") ; break;
 
-			case 1:  action = SecurityConfigLoader.getValue("shanli.acceptor") ; break;
+			case 1:  action = IssuerConfigLoader.getValue("shanli.acceptor") ; break;
 				
-			case 2:  action = SecurityConfigLoader.getValue("shanli.holer");break;
+			case 2:  action = IssuerConfigLoader.getValue("shanli.holer");break;
 						
-			case 3:  action = SecurityConfigLoader.getValue("payment.acceptor");break;
+			case 3:  action = IssuerConfigLoader.getValue("payment.acceptor");break;
 				
-			case 4:  action = SecurityConfigLoader.getValue("booking.system");break;
+			case 4:  action = IssuerConfigLoader.getValue("booking.system");break;
 				
-			case 5:  action = SecurityConfigLoader.getValue("reporting");break;
+			case 5:  action = IssuerConfigLoader.getValue("reporting");break;
 	
 		}
 		if(requestContext != null)

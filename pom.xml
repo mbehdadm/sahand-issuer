@@ -64,10 +64,15 @@
 		<hibernate.version>4.2.0.Final</hibernate.version>
 		<persistence.version>1.0</persistence.version>
 		
+		<sahand-acquirer.version>2.0.0.Final</sahand-acquirer.version>
 		<sahand-issuer.version>2.0.0.Final</sahand-issuer.version>
 		<sahand-common.version>2.0.0.Final</sahand-common.version>
 
 		<jbossHome>\\192.168.7.157\jboss-6.1.0.Final</jbossHome>
 		<jbossDomain>default</jbossDomain>
 	</properties>
+	
+	
+
+   
 </project>
