@@ -1,4 +1,4 @@
-package com.sahand.security.service;
+package com.sahand.issuer.service;
 
 import com.sahand.issuer.message.IssuerSetupRequest;
 import com.sahand.issuer.message.IssuerSetupResponse;
