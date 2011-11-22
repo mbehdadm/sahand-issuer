@@ -15,41 +15,70 @@ import java.util.Date;
 @Entity
 @Table(name="MMBRINFO")
 public class MemberInfo implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Column(name="MMID")
 	private long memberId;
+	@Column(name="MIBIRTHCITY")
 	private String birthcity;
+	@Temporal( TemporalType.DATE)
+	@Column(name="MIBIRTHDT")
 	private Date birthday;
+	@Column(name="MIBLDGRP")
 	private Byte bloodGroup;
+	@Column(name="MICELLPHONE")
 	private String cellPhone;
+	@Column(name="MIEDULVL")
 	private BigDecimal educationLevel;
+	@Column(name="MIEMAIL")
 	private String email;
+	@Column(name="MIFATHER")
 	private String fatherName;
+	@Column(name="MIFAVCOLOR")
 	private BigDecimal favoriteColor;
+	@Column(name="MIGENDER")
 	private Byte gender;
+	@Column(name="MIHOMEADR")
 	private String homeAddress;
+	@Column(name="MIHOMEPST")
 	private BigDecimal homePostalCode;
+	@Column(name="MIHOMETEL")
 	private String homeTel;
+	@Column(name="MIMOTHER")
 	private String motherName;
+	@Temporal( TemporalType.DATE)
+	@Column(name="MIMRGDT")
 	private Date marriageDate;
+	@Column(name="MIMRGSTS")
 	private Byte marriageStatus;
+	@Column(name="MINATIONALID")
 	private String nationalId;
+	@Column(name="MIPASSPORTID")
 	private String passportId;
+	@Column(name="MIPIC")
 	private String picture;
+	@Column(name="MIPOSTADRS")
 	private BigDecimal postAddress;
+	@Column(name="MIPRSWEBURL")
 	private String miprsweburl;
+	@Column(name="MISIGN")
 	private String signature;
+	@Column(name="MIWORKADR")
 	private String workAddress;
+	@Column(name="MIWORKPST")
 	private BigDecimal workPostalCode;
+	@Column(name="MIWORKTEL")
 	private String workTel;
-	private Byte[] photo;
+//	private Byte[] photo;
+	@OneToOne
+	@JoinColumn(name="MMID")
 	private Members member;
 
     public MemberInfo() {
     }
 
 
-	@Id
-	@Column(name="MMID")
+	
 	public long getMemberId() {
 		return memberId;
 	}
@@ -58,7 +87,7 @@ public class MemberInfo implements Serializable {
 		this.memberId = memberId;
 	}
 
-	@Column(name="MIBIRTHCITY")
+	
 	public String getBirthcity() {
 		return this.birthcity;
 	}
@@ -68,8 +97,7 @@ public class MemberInfo implements Serializable {
 	}
 
 
-    @Temporal( TemporalType.DATE)
-	@Column(name="MIBIRTHDT")
+   
 	public Date getBirthday() {
 		return this.birthday;
 	}
@@ -79,7 +107,7 @@ public class MemberInfo implements Serializable {
 	}
 
 
-	@Column(name="MIBLDGRP")
+	
 	public Byte getBloodGroup() {
 		return this.bloodGroup;
 	}
@@ -89,7 +117,7 @@ public class MemberInfo implements Serializable {
 	}
 
 
-	@Column(name="MICELLPHONE")
+	
 	public String getCellPhone() {
 		return this.cellPhone;
 	}
@@ -99,7 +127,7 @@ public class MemberInfo implements Serializable {
 	}
 
 
-	@Column(name="MIEDULVL")
+	
 	public BigDecimal getEducationLevel() {
 		return this.educationLevel;
 	}
@@ -109,7 +137,7 @@ public class MemberInfo implements Serializable {
 	}
 
 
-	@Column(name="MIEMAIL")
+	
 	public String getEmail() {
 		return this.email;
 	}
@@ -119,7 +147,7 @@ public class MemberInfo implements Serializable {
 	}
 
 
-	@Column(name="MIFATHER")
+	
 	public String getFatherName() {
 		return this.fatherName;
 	}
@@ -129,7 +157,7 @@ public class MemberInfo implements Serializable {
 	}
 
 
-	@Column(name="MIFAVCOLOR")
+	
 	public BigDecimal getFavoriteColor() {
 		return this.favoriteColor;
 	}
@@ -139,7 +167,7 @@ public class MemberInfo implements Serializable {
 	}
 
 
-	@Column(name="MIGENDER")
+	
 	public Byte getGender() {
 		return this.gender;
 	}
@@ -149,7 +177,7 @@ public class MemberInfo implements Serializable {
 	}
 
 
-	@Column(name="MIHOMEADR")
+	
 	public String getHomeAddress() {
 		return this.homeAddress;
 	}
@@ -159,7 +187,7 @@ public class MemberInfo implements Serializable {
 	}
 
 
-	@Column(name="MIHOMEPST")
+	
 	public BigDecimal getHomePostalCode() {
 		return this.homePostalCode;
 	}
@@ -169,7 +197,7 @@ public class MemberInfo implements Serializable {
 	}
 
 
-	@Column(name="MIHOMETEL")
+	
 	public String getHomeTel() {
 		return this.homeTel;
 	}
@@ -179,7 +207,7 @@ public class MemberInfo implements Serializable {
 	}
 
 
-	@Column(name="MIMOTHER")
+	
 	public String getMotherName() {
 		return this.motherName;
 	}
@@ -189,8 +217,7 @@ public class MemberInfo implements Serializable {
 	}
 
 
-    @Temporal( TemporalType.DATE)
-	@Column(name="MIMRGDT")
+    
 	public Date getMarriageDate() {
 		return this.marriageDate;
 	}
@@ -200,7 +227,7 @@ public class MemberInfo implements Serializable {
 	}
 
 
-	@Column(name="MIMRGSTS")
+	
 	public Byte getMarriageStatus() {
 		return this.marriageStatus;
 	}
@@ -210,7 +237,7 @@ public class MemberInfo implements Serializable {
 	}
 
 
-	@Column(name="MINATIONALID")
+	
 	public String getNationalId() {
 		return this.nationalId;
 	}
@@ -220,7 +247,7 @@ public class MemberInfo implements Serializable {
 	}
 
 
-	@Column(name="MIPASSPORTID")
+	
 	public String getPassportId() {
 		return this.passportId;
 	}
@@ -230,7 +257,7 @@ public class MemberInfo implements Serializable {
 	}
 
 
-	@Column(name="MIPIC")
+	
 	public String getPicture() {
 		return this.picture;
 	}
@@ -240,7 +267,7 @@ public class MemberInfo implements Serializable {
 	}
 
 
-	@Column(name="MIPOSTADRS")
+	
 	public BigDecimal getPostAddress() {
 		return this.postAddress;
 	}
@@ -259,7 +286,7 @@ public class MemberInfo implements Serializable {
 	}
 
 
-	@Column(name="MISIGN")
+	
 	public String getSignature() {
 		return this.signature;
 	}
@@ -269,7 +296,7 @@ public class MemberInfo implements Serializable {
 	}
 
 
-	@Column(name="MIWORKADR")
+	
 	public String getWorkAddress() {
 		return this.workAddress;
 	}
@@ -279,7 +306,7 @@ public class MemberInfo implements Serializable {
 	}
 
 
-	@Column(name="MIWORKPST")
+	
 	public BigDecimal getWorkPostalCode() {
 		return this.workPostalCode;
 	}
@@ -289,7 +316,7 @@ public class MemberInfo implements Serializable {
 	}
 
 
-	@Column(name="MIWORKTEL")
+	
 	public String getWorkTel() {
 		return this.workTel;
 	}
@@ -298,19 +325,17 @@ public class MemberInfo implements Serializable {
 		this.workTel = workTel;
 	}
 
-	@Column(name="MIPHOTO")
-	public Byte[] getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(Byte[] photo) {
-		this.photo = photo;
-	}
+//	@Column(name="MIPHOTO")
+//	public Byte[] getPhoto() {
+//		return photo;
+//	}
+//
+//	public void setPhoto(Byte[] photo) {
+//		this.photo = photo;
+//	}
 
 
 	//bi-directional one-to-one association to Member
-	@OneToOne
-	@JoinColumn(name="MMID")
 	public Members getMember() {
 		return this.member;
 	}

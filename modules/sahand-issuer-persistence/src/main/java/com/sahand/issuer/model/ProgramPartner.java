@@ -20,108 +20,105 @@ import com.sahand.acquirer.model.Institute;
 @Table(name = "PROGPARTNR")
 public class ProgramPartner implements Serializable
 {
-    
-    private static final long serialVersionUID = 1L;
-    
-    private ProgramPartnerId programPartnerId;
-    private Program program;
-    private Institute institution;
-    // private FeeScheme feeScheme;
-    private Long feeId;
-    
-    public ProgramPartner()
-    {
 
-    }
-    
-    public ProgramPartner(ProgramPartnerId programPartnerId, Program program,
-    		Institute institution)
-    {
+	@EmbeddedId
+	@AttributeOverrides(
+			{
+				@AttributeOverride(name = "pgid", column = @Column(name = "PGID", nullable = false, precision = 6, scale = 0)),
+				@AttributeOverride(name = "pttype", column = @Column(name = "PTTYPE", nullable = false, precision = 2, scale = 0)),
+				@AttributeOverride(name = "isid", column = @Column(name = "ISID", nullable = false, precision = 8, scale = 0)) })
+	@NotNull
+	private ProgramPartnerId programPartnerId;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "PGID", insertable = false, updatable = false)
+	@NotNull
+	private Program program;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ISID", nullable = false, insertable = false, updatable = false)
+	@NotNull
+	private Institute institution;
+	@Column(name = "FSID", nullable = true)
+	private Long feeId;
 
-	super();
-	this.programPartnerId = programPartnerId;
-	this.program = program;
-	this.institution = institution;
-    }
-    
-    @EmbeddedId
-    @AttributeOverrides(
-    {
-			@AttributeOverride(name = "pgid", column = @Column(name = "PGID", nullable = false, precision = 6, scale = 0)),
-			@AttributeOverride(name = "pttype", column = @Column(name = "PTTYPE", nullable = false, precision = 2, scale = 0)),
-			@AttributeOverride(name = "isid", column = @Column(name = "ISID", nullable = false, precision = 8, scale = 0)) })
-    @NotNull
-    public ProgramPartnerId getProgramPartnerId()
-    {
+	public ProgramPartner()
+	{
 
-	return programPartnerId;
-    }
-    
-    public void setProgramPartnerId(ProgramPartnerId programPartnerId)
-    {
+	}
 
-	this.programPartnerId = programPartnerId;
-    }
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PGID", insertable = false, updatable = false)
-    @NotNull
-    public Program getProgram()
-    {
+	public ProgramPartner(ProgramPartnerId programPartnerId, Program program,
+			Institute institution)
+	{
 
-	return program;
-    }
-    
-    public void setProgram(Program program)
-    {
+		super();
+		this.programPartnerId = programPartnerId;
+		this.program = program;
+		this.institution = institution;
+	}
 
-	this.program = program;
-    }
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ISID", nullable = false, insertable = false, updatable = false)
-    @NotNull
-    public Institute getInstitution()
-    {
 
-	return institution;
-    }
-    
-    public void setInstitution(Institute institution)
-    {
+	public ProgramPartnerId getProgramPartnerId()
+	{
 
-	this.institution = institution;
-    }
-    
-    /**
-     * @return the feeId
-     */
-    @Column(name = "FSID", nullable = true)
-    public Long getFeeId()
-    {
+		return programPartnerId;
+	}
 
-	return feeId;
-    }
-    
-    /**
-     * @param feeId
-     *            the feeId to set
-     */
-    public void setFeeId(Long feeId)
-    {
+	public void setProgramPartnerId(ProgramPartnerId programPartnerId)
+	{
 
-	this.feeId = feeId;
-    }
-    
-    // @ManyToOne(fetch = FetchType.LAZY)
-    // @JoinColumn(name = "FSID", nullable = false)
-    // @NotNull
-    // public FeeScheme getFeeScheme() {
-    // return feeScheme;
-    // }
-    //
-    // public void setFeeScheme(FeeScheme feeScheme) {
-    // this.feeScheme = feeScheme;
-    // }
-    
+		this.programPartnerId = programPartnerId;
+	}
+
+
+	public Program getProgram()
+	{
+
+		return program;
+	}
+
+	public void setProgram(Program program)
+	{
+
+		this.program = program;
+	}
+
+
+	public Institute getInstitution()
+	{
+
+		return institution;
+	}
+
+	public void setInstitution(Institute institution)
+	{
+
+		this.institution = institution;
+	}
+
+	/**
+	 * @return the feeId
+	 */
+	 public Long getFeeId()
+	{
+
+		return feeId;
+	}
+
+	/**
+	 * @param feeId
+	 *            the feeId to set
+	 */
+	 public void setFeeId(Long feeId)
+	 {
+
+		 this.feeId = feeId;
+	 }
+
+	@Override
+	public String toString() {
+		return "ProgramPartner [programPartnerId=" + programPartnerId + "]";
+	}
+	 
+	 
+
+
 }

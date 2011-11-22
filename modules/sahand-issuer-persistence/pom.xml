@@ -15,7 +15,13 @@
   
 
 	<dependencies>
-	
+		<dependency>
+			<groupId>com.sahand.issuer</groupId>
+			<artifactId>sahand-issuer-api</artifactId>
+			<version>${sahand-issuer.version}</version>
+			<type>jar</type>
+		</dependency>
+		
 		<dependency>
 			<groupId>com.sahand.acquirer</groupId>
 			<artifactId>sahand-acquirer-persistence</artifactId>

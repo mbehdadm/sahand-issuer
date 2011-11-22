@@ -14,28 +14,41 @@ import java.util.Set;
  */
 @Entity
 @Table(name="MEMBER")
-@SequenceGenerator(name="MEMBERS_SEQ",sequenceName="MEMBER_SEQ")
+//@SequenceGenerator(name="MEMBERS_SEQ",sequenceName="MEMBER_SEQ")
 public class Members implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	@Id
+//	@GeneratedValue(generator="MEMBERS_SEQ",strategy=GenerationType.SEQUENCE)
+	@Column(name="MMID")
 	private long memberId;
+	@Column(name="MMLATINAME")
 	private String latinName;
+	@Column(name="MMLOGPASS")
 	private String loginPassword;
+	@Column(name="MMLOGUSER")
 	private String loginUser;
+	@Column(name="MMNAME")
 	private String name;
+	@Column(name="MMSTS")
 	private Byte status;
+	@Temporal( TemporalType.TIMESTAMP)
+	@Column(name="MMSTSDT")
 	private Date statusDate;
+	@Column(name="MMTYPE")
 	private Byte type;
+	@ManyToOne
+	@JoinColumn(name="ISID")
 	private CreditOrganization crreditOrganization;
+	@OneToMany(mappedBy="member")
 	private Set<MemberCard> membrCards;
+	@OneToOne(mappedBy="member")
 	private MemberInfo memberInfo;
 
     public Members() {
     }
 
 
-	@Id
-	@GeneratedValue(generator="MEMBERS_SEQ",strategy=GenerationType.SEQUENCE)
-	@Column(name="MMID")
+	
 	public long getMemberId() {
 		return this.memberId;
 	}
@@ -45,7 +58,7 @@ public class Members implements Serializable {
 	}
 
 
-	@Column(name="MMLATINAME")
+	
 	public String getLatinName() {
 		return this.latinName;
 	}
@@ -55,7 +68,7 @@ public class Members implements Serializable {
 	}
 
 
-	@Column(name="MMLOGPASS")
+	
 	public String getLoginPassword() {
 		return this.loginPassword;
 	}
@@ -65,7 +78,7 @@ public class Members implements Serializable {
 	}
 
 
-	@Column(name="MMLOGUSER")
+	
 	public String getLoginUser() {
 		return this.loginUser;
 	}
@@ -75,7 +88,7 @@ public class Members implements Serializable {
 	}
 
 
-	@Column(name="MMNAME")
+	
 	public String getName() {
 		return this.name;
 	}
@@ -85,7 +98,7 @@ public class Members implements Serializable {
 	}
 
 
-	@Column(name="MMSTS")
+	
 	public Byte getStatus() {
 		return this.status;
 	}
@@ -95,8 +108,7 @@ public class Members implements Serializable {
 	}
 
 
-    @Temporal( TemporalType.DATE)
-	@Column(name="MMSTSDT")
+    
 	public Date getStatusDate() {
 		return this.statusDate;
 	}
@@ -106,7 +118,7 @@ public class Members implements Serializable {
 	}
 
 
-	@Column(name="MMTYPE")
+	
 	public Byte getType() {
 		return this.type;
 	}
@@ -117,8 +129,6 @@ public class Members implements Serializable {
 
 
 	//bi-directional many-to-one association to CreditOrganization
-    @ManyToOne
-	@JoinColumn(name="ISID")
 	public CreditOrganization getCrreditOrganization() {
 		return this.crreditOrganization;
 	}
@@ -129,7 +139,6 @@ public class Members implements Serializable {
 	
 
 	//bi-directional many-to-one association to MemberCard
-	@OneToMany(mappedBy="member")
 	public Set<MemberCard> getMembrCards() {
 		return this.membrCards;
 	}
@@ -140,7 +149,6 @@ public class Members implements Serializable {
 	
 
 	//bi-directional one-to-one association to MemberInfo
-	@OneToOne(mappedBy="member")
 	public MemberInfo getMemberInfo() {
 		return this.memberInfo;
 	}
@@ -149,9 +157,6 @@ public class Members implements Serializable {
 		this.memberInfo = memberInfo;
 	}
 	
-
-
-
 	@Override
 	public String toString() {
 		return "Member [memberId=" + memberId + ", latinName=" + latinName

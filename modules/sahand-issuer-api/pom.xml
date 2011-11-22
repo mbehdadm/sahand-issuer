@@ -22,6 +22,12 @@
 		<version>${sahand-common.version}</version>
 	  </dependency>
 	  
+	  <dependency>
+		<groupId>com.sahand.acquirer</groupId>
+		<artifactId>sahand-acquirer-api</artifactId>
+		<version>${sahand-acquirer.version}</version>
+	  </dependency>
+	  
 	 </dependencies>
 
 </project>

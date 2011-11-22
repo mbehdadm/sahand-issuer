@@ -5,50 +5,40 @@ body {
    margin-left: auto;
    margin-right: auto;
 }
-
 #document {
-   /*  background-color: white; */
     width:100%;
     margin-left:auto;
     margin-right:auto;
-    /* border: solid 1px white; */
     float: left;
+    min-width: 1440px;
 }
-
 #title {
     float: left;
     padding: 1px 0 6px 15px;
 }
-
 #header {
     float: left;
     width: 100%;
     height: auto;
     font-family: Verdana, Arial, Helvetica, sans-serif;
     font-size: medium;
-    min-width: 1000px;
-   /*  background: url("../img/hdr.bg.png") 0 0 repeat-x; */
 }
-
-/* #menuForm {
-    color: #C7B299;
-    float: left;
-    font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: medium;
-    text-align: left;
-    padding-top: 14px;
-    padding-right: 15px;
-} */
+#baner{
+  width:100%;
+  height:30px;
+  float:left;
+  height:auto;
+  background: #AB0011 url(../image/banner.png) no-repeat;	
+}
 #container {
+	padding-right:5px;
+	padding-left:10px;
     margin-left:auto;
     margin-right:auto;
-    width: 1000px;
+    min-width:1440px;
     border: solid 1px white;
     font-size: medium;
-    /* background: url(../image/hdr.bar.jpg) 0 0 repeat-x; */
 }
-
 #footer {
     clear: both;
     margin-top: 10px;
@@ -62,40 +52,23 @@ body {
     font-family: helvetica, Arial;
     min-width: 1000px;
 }
-#baner{
-   /* margin: 0 auto; */
-  /*  padding: 0 20px 10px 20px; */
-  /*  border: 1px solid #666666; */
-  float:right;
-   height:auto;
-   background: #FFFFFF url(#{request.contextPath}/resources/gfx/banner.png) no-repeat;	
-}
-#panel{
+.ui-accordion{
+   float: left;
+   margin-bottom: 10px;
+   margin-top: 10px;
+   width: 150px;
+   clear: left;
 	
 }
-#menuPanel{
-	float: left;
-	padding-left: 5px;
-	width: 250px;
-}
-
 #center {
    float: left;
    margin-bottom: 10px;
    margin-top: 10px;
-   width: 740px;
     /* background: #FFFFFF url(../img/cnt.bg.gif) 0 0 repeat-x; */
 }
 
-#panelLeft{
-	float:left;
-	margin:10px;
-	
-}
-#panelRight{
-	width:300px;
-	float:right;
-	margin:10px; 
+.required{
+	color: red;
 }
 
 .button{
@@ -109,10 +82,7 @@ body {
 .createLink{
 	float: right;
 }
-/* .panelMenu{
-	
-	
-} */
+
 .label {
 	float:left;
     font-weight: bold;
@@ -123,58 +93,4 @@ body {
     float: left;
     width: 350px;
     text-align: left;
-}
-
-.ui-dialog .ui-dialog-content{
-	float: left;
-}
-.wijmo-wijmenu-child{
-	min-width: 200px;
-}
-.required{
-	color: red;
-}
-/* .ui-widget {
-	font-size: 75%;
-}  */
-
-
-
-.rightPanel{
-	
-}
-.leftPanle{
-	float: left;
-}
-.loginForm{
-	float: right;
-	padding: 20px 15px 5px 15px;
-}
-
-
-.tabNoBorder{
-	border: 0px;
-}
-
-.bannerMenu{
-	border: 0px;
-	text-align: center;
-
-}
-
-.editButton{
-	float: right;
-}
-.saveButton{
-	/* padding-left: 5%; */
-}
-.tableHeader{
-	float: right;
-}
-.loginButton{
-	margin-left: 30%
-}
-
-.mainLayout{
-	border: 0px;
 }

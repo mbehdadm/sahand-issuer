@@ -1,21 +1,20 @@
 package com.sahand.issuer.message;
 
 import com.sahand.acquirer.data.InstituteInformation;
-import com.sahand.common.util.message.RequestHeader;
+import com.sahand.common.util.message.ResponseHeader;
 import com.sahand.issuer.data.CardTypeInformation;
 import com.sahand.issuer.data.MemberInformation;
 import com.sahand.issuer.data.ProgramInformation;
-import com.sahand.issuer.data.ProgramParameterInformation;
 
-public class IssuerSetupRequest extends RequestHeader{
-	
+public class IssuerAuthorizerSetupResponse extends ResponseHeader {
+
 	private ProgramInformation program;
 	
 	private InstituteInformation institute;
 	private CardTypeInformation cardType;
 	
 	private MemberInformation member;
-
+	
 	public ProgramInformation getProgram() {
 		return program;
 	}
@@ -43,13 +42,10 @@ public class IssuerSetupRequest extends RequestHeader{
 	}
 	@Override
 	public String toString() {
-		return "IssuerSetupRequest [program=" + program + ", institute="
+		return "IssuerSetupResponse [program=" + program + ", institute="
 				+ institute + ", cardType=" + cardType + ", member=" + member
 				+ "]";
 	}
-	
-	
-	
 	
 	
 	

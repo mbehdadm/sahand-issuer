@@ -20,77 +20,90 @@ import org.hibernate.validator.constraints.Length;
 @Table(name = "PROGPARAM")
 public class ProgramParameter implements Serializable
 {
-    
-    private ProgramParameterId programParameterId;
-    private Program program;
-    private String value;
-    private Integer valueDataType;
-    
-    public ProgramParameter()
-    {
 
-    }
-    
-    @EmbeddedId
-    @AttributeOverrides(
-    {
-			@AttributeOverride(name = "pgid", column = @Column(name = "PGID", nullable = false, precision = 6, scale = 0)),
-			@AttributeOverride(name = "pptype", column = @Column(name = "PPTYPE", nullable = false, precision = 4, scale = 0)) })
-    @NotNull
-    public ProgramParameterId getProgramParameterId()
-    {
+	@EmbeddedId
+	@AttributeOverrides(
+			{
+				@AttributeOverride(name = "pgid", column = @Column(name = "PGID", nullable = false, precision = 6, scale = 0)),
+				@AttributeOverride(name = "pptype", column = @Column(name = "PPTYPE", nullable = false, precision = 4, scale = 0)) })
+	@NotNull
+	private ProgramParameterId programParameterId;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "PGID", nullable = false, insertable = false, updatable = false)
+	@NotNull
+	private Program program;
+	@Column(name = "PPVALUE", nullable = false, length = 100)
+	@NotNull
+	@Length(max = 100)
+	private String value;
+	@Column(name = "PPVLVDTYPE", nullable = false, length = 100)
+	@NotNull
+	private Integer valueDataType;
 
-	return programParameterId;
-    }
-    
-    public void setProgramParameterId(ProgramParameterId programParameterId)
-    {
+	public ProgramParameter()
+	{
 
-	this.programParameterId = programParameterId;
-    }
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PGID", nullable = false, insertable = false, updatable = false)
-    @NotNull
-    public Program getProgram()
-    {
+	}
 
-	return program;
-    }
-    
-    public void setProgram(Program program)
-    {
 
-	this.program = program;
-    }
-    
-    @Column(name = "PPVALUE", nullable = false, length = 100)
-    @NotNull
-    @Length(max = 100)
-    public String getValue()
-    {
+	public ProgramParameterId getProgramParameterId()
+	{
 
-	return value;
-    }
-    
-    public void setValue(String value)
-    {
+		return programParameterId;
+	}
 
-	this.value = value;
-    }
-    
-    @Column(name = "PPVLVDTYPE", nullable = false, length = 100)
-    @NotNull
-    public Integer getValueDataType()
-    {
+	public void setProgramParameterId(ProgramParameterId programParameterId)
+	{
 
-	return valueDataType;
-    }
-    
-    public void setValueDataType(Integer valueDataType)
-    {
+		this.programParameterId = programParameterId;
+	}
 
-	this.valueDataType = valueDataType;
-    }
-    
+	
+	public Program getProgram()
+	{
+
+		return program;
+	}
+
+	public void setProgram(Program program)
+	{
+
+		this.program = program;
+	}
+
+	
+	public String getValue()
+	{
+
+		return value;
+	}
+
+	public void setValue(String value)
+	{
+
+		this.value = value;
+	}
+
+	
+	public Integer getValueDataType()
+	{
+
+		return valueDataType;
+	}
+
+	public void setValueDataType(Integer valueDataType)
+	{
+
+		this.valueDataType = valueDataType;
+	}
+
+
+	@Override
+	public String toString() {
+		return "ProgramParameter [programParameterId=" + programParameterId
+				+ ", program=" + program + ", value=" + value
+				+ ", valueDataType=" + valueDataType + "]";
+	}
+
+
 }

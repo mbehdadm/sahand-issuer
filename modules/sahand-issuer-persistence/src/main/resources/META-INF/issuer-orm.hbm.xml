@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+
+
+			 	   	
+	<!-- <query name="member.login">FROM 
+			  	   Members m
+			 WHERE 
+			 	   m.loginUser = ?1</query>
+			 	   
+	<query name="member.cards">FROM 
+			  	   MemberCard m
+			 WHERE 
+			 	   m.member.memberId = ?1</query>
+	 -->
+			 	   	 	   		 	   	 	   
+</hibernate-mapping>
+

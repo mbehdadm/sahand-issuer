@@ -10,130 +10,137 @@ import javax.validation.constraints.NotNull;
 @Embeddable
 public class ProgramPartnerId implements Serializable
 {
-    
-    /**
-	 * 
+	@Column(name = "PGID", nullable = false, precision = 6, scale = 0)
+	@NotNull
+	private Long programId;
+	@Column(name = "PTTYPE", nullable = false, precision = 2, scale = 0)
+	@NotNull
+	private Byte programPartnerType;
+	@Column(name = "ISID", nullable = false, length = 8)
+	@NotNull
+	private String institutionId;
+
+	public ProgramPartnerId()
+	{
+
+	}
+
+	public ProgramPartnerId(Long programId, Byte programPartnerType, String institutionId)
+	{
+
+		super();
+		this.programId = programId;
+		this.programPartnerType = programPartnerType;
+		this.institutionId = institutionId;
+	}
+
+
+	public Long getProgramId()
+	{
+
+		return programId;
+	}
+
+	public void setProgramId(Long programId)
+	{
+
+		this.programId = programId;
+	}
+
+
+	public Byte getProgramPartnerType()
+	{
+
+		return programPartnerType;
+	}
+
+	/**
+	 * @param programPartnerType
+	 *            the programPartnerType to set
 	 */
-    private static final long serialVersionUID = 1L;
-    private Long programId;
-    private Byte programPartnerType;
-    private String institutionId;
-    
-    public ProgramPartnerId()
-    {
+	public void setProgramPartnerType(Byte programPartnerType)
+	{
 
-    }
-    
-    public ProgramPartnerId(Long programId, Byte programPartnerType, String institutionId)
-    {
+		this.programPartnerType = programPartnerType;
+	}
 
-	super();
-	this.programId = programId;
-	this.programPartnerType = programPartnerType;
-	this.institutionId = institutionId;
-    }
-    
-    @Column(name = "PGID", nullable = false, precision = 6, scale = 0)
-    @NotNull
-    public Long getProgramId()
-    {
 
-	return programId;
-    }
-    
-    public void setProgramId(Long programId)
-    {
+	public String getInstitutionId()
+	{
 
-	this.programId = programId;
-    }
-    
-    @Column(name = "PTTYPE", nullable = false, precision = 2, scale = 0)
-    @NotNull
-    public Byte getProgramPartnerType()
-    {
+		return institutionId;
+	}
 
-	return programPartnerType;
-    }
-    
-    /**
-     * @param programPartnerType
-     *            the programPartnerType to set
-     */
-    public void setProgramPartnerType(Byte programPartnerType)
-    {
+	public void setInstitutionId(String institutionId)
+	{
 
-	this.programPartnerType = programPartnerType;
-    }
-    
-    @Column(name = "ISID", nullable = false, length = 8)
-    @NotNull
-    public String getInstitutionId()
-    {
+		this.institutionId = institutionId;
+	}
 
-	return institutionId;
-    }
-    
-    public void setInstitutionId(String institutionId)
-    {
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode()
+	{
 
-	this.institutionId = institutionId;
-    }
-    
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
-    public int hashCode()
-    {
-
-	final int prime = 31;
-	int result = 1;
-	result = prime * result
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
 				+ ((institutionId == null) ? 0 : institutionId.hashCode());
-	result = prime * result
+		result = prime * result
 				+ ((programId == null) ? 0 : programId.hashCode());
-	result = prime * result + ((programPartnerType == null) ? 0 : programPartnerType.hashCode());
-	return result;
-    }
-    
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(Object obj)
-    {
+		result = prime * result + ((programPartnerType == null) ? 0 : programPartnerType.hashCode());
+		return result;
+	}
 
-	if (this == obj)
-	    return true;
-	if (obj == null)
-	    return false;
-	if (!(obj instanceof ProgramPartnerId))
-	    return false;
-	final ProgramPartnerId other = (ProgramPartnerId) obj;
-	if (institutionId == null)
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj)
 	{
-	    if (other.institutionId != null)
-		return false;
+
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof ProgramPartnerId))
+			return false;
+		final ProgramPartnerId other = (ProgramPartnerId) obj;
+		if (institutionId == null)
+		{
+			if (other.institutionId != null)
+				return false;
+		}
+		else if (!institutionId.equals(other.institutionId))
+			return false;
+		if (programId == null)
+		{
+			if (other.programId != null)
+				return false;
+		}
+		else if (!programId.equals(other.programId))
+			return false;
+		if (programPartnerType == null)
+		{
+			if (other.programPartnerType != null)
+				return false;
+		}
+		else if (!programPartnerType.equals(other.programPartnerType))
+			return false;
+		return true;
 	}
-	else if (!institutionId.equals(other.institutionId))
-	    return false;
-	if (programId == null)
-	{
-	    if (other.programId != null)
-		return false;
+
+	@Override
+	public String toString() {
+		return "ProgramPartnerId [programId=" + programId
+				+ ", programPartnerType=" + programPartnerType
+				+ ", institutionId=" + institutionId + "]";
 	}
-	else if (!programId.equals(other.programId))
-	    return false;
-	if (programPartnerType == null)
-	{
-	    if (other.programPartnerType != null)
-		return false;
-	}
-	else if (!programPartnerType.equals(other.programPartnerType))
-	    return false;
-	return true;
-    }
-    
+	
+	
+
 }

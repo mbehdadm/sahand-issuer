@@ -88,7 +88,7 @@
    </dependencyManagement>
 
    <dependencies>
-      	<dependency>
+      	<!-- <dependency>
       		<groupId>com.sahand.issuer</groupId>
       	 	<artifactId>sahand-issuer-api</artifactId>
 		 	<version>${sahand-issuer.version}</version>
@@ -100,7 +100,7 @@
       	 	<artifactId>sahand-issuer-proxy</artifactId>
 		 	<version>${sahand-issuer.version}</version>
 		 	<type>jar</type>
-      	</dependency>
+      	</dependency> -->
 		
 		<dependency>
 			<groupId>com.sun.xml.ws</groupId>
