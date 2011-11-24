@@ -23,6 +23,9 @@ public class CreditOrganization implements Serializable
 	@NotNull
 	private String institutionId;
 	
+	@Column(name = "CRACTVAMNT", nullable = false)
+	private Integer activationAmount;
+	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "isid", nullable = false, insertable = false, updatable = false)
 	@NotNull
@@ -60,6 +63,17 @@ public class CreditOrganization implements Serializable
 	}
 
 
+
+	public Integer getActivationAmount() {
+		return activationAmount;
+	}
+
+
+	public void setActivationAmount(Integer activationAmount) {
+		this.activationAmount = activationAmount;
+	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -94,5 +108,13 @@ public class CreditOrganization implements Serializable
 		return true;
 	}
 	
+
+	@Override
+	public String toString() {
+		return "CreditOrganization [institutionId=" + institutionId
+				+ ", activationAmount=" + activationAmount + ", institution="
+				+ institution + "]";
+	}
+
 	
 }

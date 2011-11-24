@@ -4,12 +4,16 @@
     xsi:schemaLocation="
         http://ocpsoft.com/prettyfaces/3.3.2
         http://ocpsoft.com/xml/ns/prettyfaces/ocpsoft-pretty-faces-3.3.2.xsd">
-
  	<url-mapping id="home">
         <pattern value="/"></pattern>
         <view-id>/index.xhtml</view-id>
     </url-mapping>
     
+    <url-mapping id="credit"> 
+	   <pattern value="/credit" /> 
+	   <view-id value="/Creidt.xhtml" />
+	   <!-- <query-param name="language"> #{bean.language} </query-param> -->
+	</url-mapping>
     <!-- <url-mapping id="login">
 		<pattern value="/" />
 		<view-id value="#{loginCheker.getViewPath}" />

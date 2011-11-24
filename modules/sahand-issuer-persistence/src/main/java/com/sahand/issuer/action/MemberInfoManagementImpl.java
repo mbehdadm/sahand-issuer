@@ -102,8 +102,10 @@ public class MemberInfoManagementImpl {
 		try {
 
 			memberInfo = find(memberInformation.getMemberId());
-			if(memberInfo == null)
-				throw new IssuerException("member.info.not.find");
+			if(memberInfo == null){
+//				throw new IssuerException("member.info.not.find");
+				return create(memberInformation);
+			}
 
 			memberInfo = checkAndConvertFrom(memberInformation,memberInfo);
 			
@@ -182,7 +184,8 @@ public class MemberInfoManagementImpl {
 		try {
 
 			memberInfo = entityManager.find(MemberInfo.class, memberId);
-
+			if(memberInfo == null)
+				return;
 			entityManager.remove(memberInfo);
 
 		} catch (Exception e) {

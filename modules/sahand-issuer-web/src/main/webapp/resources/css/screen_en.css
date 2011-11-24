@@ -7,8 +7,6 @@ body {
 }
 #document {
     width:100%;
-    margin-left:auto;
-    margin-right:auto;
     float: left;
     min-width: 1440px;
 }
@@ -25,7 +23,7 @@ body {
 }
 #baner{
   width:100%;
-  height:30px;
+  height:100px;
   float:left;
   height:auto;
   background: #AB0011 url(../image/banner.png) no-repeat;	

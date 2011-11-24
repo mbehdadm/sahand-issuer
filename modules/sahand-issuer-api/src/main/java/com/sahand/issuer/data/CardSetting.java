@@ -1,33 +1,16 @@
 package com.sahand.issuer.data;
 
-import com.sahand.issuer.enumeration.CardStatus;
-import com.sahand.issuer.enumeration.CardStatusReason;
 
 public class CardSetting {
-
 	
-    private String confirmNewPassword;
-    private String confirmNewPin;
     private String newPassword;
     private String newPin;
     private String pan;
     private String password;
     private String pin;
-    private CardStatus status;
-    private CardStatusReason statusReason;
+    private Byte status;
+    private Byte statusReason;
     
-	public String getConfirmNewPassword() {
-		return confirmNewPassword;
-	}
-	public void setConfirmNewPassword(String confirmNewPassword) {
-		this.confirmNewPassword = confirmNewPassword;
-	}
-	public String getConfirmNewPin() {
-		return confirmNewPin;
-	}
-	public void setConfirmNewPin(String confirmNewPin) {
-		this.confirmNewPin = confirmNewPin;
-	}
 	public String getNewPassword() {
 		return newPassword;
 	}
@@ -58,25 +41,23 @@ public class CardSetting {
 	public void setPin(String pin) {
 		this.pin = pin;
 	}
-	public CardStatus getStatus() {
+	public Byte getStatus() {
 		return status;
 	}
-	public void setStatus(CardStatus status) {
+	public void setStatus(Byte status) {
 		this.status = status;
 	}
-	public CardStatusReason getStatusReason() {
+	public Byte getStatusReason() {
 		return statusReason;
 	}
-	public void setStatusReason(CardStatusReason statusReason) {
+	public void setStatusReason(Byte statusReason) {
 		this.statusReason = statusReason;
 	}
 	@Override
 	public String toString() {
-		return "CardSetting [confirmNewPassword=" + confirmNewPassword
-				+ ", confirmNewPin=" + confirmNewPin + ", newPassword="
-				+ newPassword + ", newPin=" + newPin + ", pan=" + pan
-				+ ", password=" + password + ", pin=" + pin + ", status="
-				+ status + ", statusReason=" + statusReason + "]";
+		return "CardSetting [newPassword=" + newPassword + ", newPin=" + newPin
+				+ ", pan=" + pan + ", password=" + password + ", pin=" + pin
+				+ ", status=" + status + ", statusReason=" + statusReason + "]";
 	}
     
     

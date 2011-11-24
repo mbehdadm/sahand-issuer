@@ -1,0 +1,67 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:cp="http://java.sun.com/jsf/composite/components/property"
+	template="#{theme.corporateTemplate}">
+
+	<ui:define name="content">
+
+		<h:form id="classForm">
+
+			<h:panelGrid id="display" columns="2" cellpadding="4">
+
+				<h:outputText value="#{messages['event.name']}" />
+				<h:inputText value="#{actionAgent.eventInformation.subject}" />
+
+				<h:outputText value="#{messages['event.fromDate']}" />
+				<p:calendar value="#{actionAgent.eventInformation.fromDate}" />
+
+				<h:outputText value="#{messages['event.toDate']}" />
+				<p:calendar value="#{actionAgent.eventInformation.toDate}" />
+
+			</h:panelGrid>
+			<p:separator />
+			<p:commandButton image="ui-icon ui-icon-plus">
+				<f:setPropertyActionListener value="#{true}"
+					target="#{requestScope.renderCampNou}" />
+			</p:commandButton>
+
+			<p:outputPanel autoUpdate="true">
+				<h:panelGrid id="display" columns="2" cellpadding="4"
+					rendered="#{requestScope.renderCampNou}">
+
+
+					<cp:input id="name" label="#{messages['action.name']}">
+						<h:inputText id="input"
+							value="#{actionAgent.actionInformation.name}" />
+					</cp:input>
+
+					<cp:input id="fromDate" label="#{messages['action.fromDate']}">
+						<h:inputText id="input"
+							value="#{actionAgent.actionInformation.fromDate}" />
+					</cp:input>
+
+					<cp:input id="toDate" label="#{messages['action.toDate']}">
+						<h:inputText id="input"
+							value="#{actionAgent.actionInformation.toDate}" />
+					</cp:input>
+
+
+				</h:panelGrid>
+
+			</p:outputPanel>
+
+
+			<p:commandButton styleClass="saveButton"
+				value="#{messages['create']}" action="#{actionAgent.create}"
+				ajax="false" />
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>

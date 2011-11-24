@@ -22,20 +22,43 @@ import com.sahand.acquirer.model.Institute;
 @Table(name = "CARDTYPE")
 public class CardType implements Serializable
 {
-
+	@Id
+	@Column(name = "CTID", unique = true, nullable = false, precision = 3, scale = 0)
+	@NotNull
 	private Integer id;
+	@Column(name = "CTPANFMT", unique = true, nullable = true, length = 30)
 	private String panFormat;
+	@Column(name = "CTPINENC", nullable = false, precision = 2, scale = 0)
+	@NotNull
 	private Byte pinEncrytion;
+	@Column(name = "CTPINFMT", nullable = false, precision = 2, scale = 0)
+	@NotNull
 	private Byte pinFormat;
+	@Column(name = "CTAUTHORIZ", nullable = true, precision = 2, scale = 0)
 	private Byte authorization;
+	@Column(name = "CTAUTHENT", nullable = true, precision = 2, scale = 0)
 	private Byte authentication;
+	@Column(name = "CTAPP", nullable = false, precision = 8, scale = 0)
+	@NotNull
 	private Integer application;
+	@Column(name = "CTDEFSRVCD", nullable = false, precision = 3, scale = 0)
+	@NotNull
 	private Short defaultServiceCode;
+	@Column(name = "CTTRKFMT", nullable = false, precision = 2, scale = 0)
+	@NotNull
 	private Byte trackDataFormat;
+	@Column(name = "CTDESC", unique = true, nullable = false, length = 30)
+	@NotNull
 	private String description;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ISID", nullable = false)
+	@NotNull
 	private Institute institution;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cardType")
 	private Set<CardType2Key> cardType2Keys = new HashSet<CardType2Key>(0);
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cardType")
 	private Set<MemberCard> memberCard = new HashSet<MemberCard>(0);
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cardType")
 	private Set<CardTypeValidProgram> cardTypeValidPrograms = new HashSet<CardTypeValidProgram>(0);
 
 	public CardType()
@@ -68,9 +91,7 @@ public class CardType implements Serializable
 		this.cardTypeValidPrograms = cardTypeValidPrograms;
 	}
 
-	@Id
-	@Column(name = "CTID", unique = true, nullable = false, precision = 3, scale = 0)
-	@NotNull
+	
 	public Integer getId()
 	{
 
@@ -83,7 +104,6 @@ public class CardType implements Serializable
 		this.id = id;
 	}
 
-	@Column(name = "CTPANFMT", unique = true, nullable = true, length = 30)
 	public String getPanFormat()
 	{
 
@@ -96,8 +116,7 @@ public class CardType implements Serializable
 		this.panFormat = panFormat;
 	}
 
-	@Column(name = "CTPINENC", nullable = false, precision = 2, scale = 0)
-	@NotNull
+
 	public Byte getPinEncrytion()
 	{
 
@@ -110,8 +129,7 @@ public class CardType implements Serializable
 		this.pinEncrytion = pinEncrytion;
 	}
 
-	@Column(name = "CTPINFMT", nullable = false, precision = 2, scale = 0)
-	@NotNull
+	
 	public Byte getPinFormat()
 	{
 
@@ -124,7 +142,6 @@ public class CardType implements Serializable
 		this.pinFormat = pinFormat;
 	}
 
-	@Column(name = "CTAUTHORIZ", nullable = true, precision = 2, scale = 0)
 	public Byte getAuthorization()
 	{
 
@@ -137,7 +154,6 @@ public class CardType implements Serializable
 		this.authorization = authorization;
 	}
 
-	@Column(name = "CTAUTHENT", nullable = true, precision = 2, scale = 0)
 	public Byte getAuthentication()
 	{
 
@@ -150,8 +166,7 @@ public class CardType implements Serializable
 		this.authentication = authentication;
 	}
 
-	@Column(name = "CTAPP", nullable = false, precision = 8, scale = 0)
-	@NotNull
+
 	public Integer getApplication()
 	{
 
@@ -164,8 +179,7 @@ public class CardType implements Serializable
 		this.application = aplication;
 	}
 
-	@Column(name = "CTDEFSRVCD", nullable = false, precision = 3, scale = 0)
-	@NotNull
+
 	public Short getDefaultServiceCode()
 	{
 
@@ -178,8 +192,7 @@ public class CardType implements Serializable
 		this.defaultServiceCode = defaultServiceCode;
 	}
 
-	@Column(name = "CTTRKFMT", nullable = false, precision = 2, scale = 0)
-	@NotNull
+
 	public Byte getTrackDataFormat()
 	{
 
@@ -192,8 +205,7 @@ public class CardType implements Serializable
 		this.trackDataFormat = trackDataFormat;
 	}
 
-	@Column(name = "CTDESC", unique = true, nullable = false, length = 30)
-	@NotNull
+
 	public String getDescription()
 	{
 
@@ -206,9 +218,7 @@ public class CardType implements Serializable
 		this.description = description;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ISID", nullable = false)
-	@NotNull
+
 	public Institute getInstitution()
 	{
 
@@ -221,7 +231,6 @@ public class CardType implements Serializable
 		this.institution = institution;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cardType")
 	public Set<CardType2Key> getCardType2Keys()
 	{
 
@@ -234,7 +243,6 @@ public class CardType implements Serializable
 		this.cardType2Keys = cardType2Keys;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cardType")
 	public Set<MemberCard> getMemberCard()
 	{
 
@@ -247,7 +255,6 @@ public class CardType implements Serializable
 		this.memberCard = memberCard;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cardType")
 	public Set<CardTypeValidProgram> getCardTypeValidPrograms()
 	{
 

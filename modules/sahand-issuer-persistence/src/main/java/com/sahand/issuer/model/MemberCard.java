@@ -22,37 +22,74 @@ import org.hibernate.validator.constraints.Length;
 @Table(name = "MEMBRCARD")
 public class MemberCard implements Serializable
 {
+	@Id
+    @Column(name = "MCPAN", unique = true, nullable = false, length = 19)
+    @Length(max = 19)
+    @NotNull
     private String pan;
+	@Column(name = "MCFLRLMT", precision = 14)
     private BigDecimal floorLimit;
+	@Column(name = "MCOTB", precision = 14)
     private BigDecimal openToBuy;
+	@Column(name = "MCSTS", nullable = false, precision = 2, scale = 0)
+    @NotNull
     private Byte status;
+	@Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "MCSTSDT", nullable = false)
     private Date statusDate;
+	@Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "MCISSDT", nullable = false)
     private Date issueDate;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "MCEXPDT", length = 7)
     private Date expirationDate;
+    @Column(name = "MCPANCVV", nullable = false, length = 3)
+    @Length(max = 3)
+    @NotNull
     private String panCvv;
+    @Column(name = "MCPINBLK")
     private byte[] pinBlock;
+    @Column(name = "MCPANPVV", length = 4)
+    @Length(max = 4)
     private String panPvv;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "MCCYCLBDT")
     private Date cycleBeginDate;
+    @Column(name = "MCCYCLEN", precision = 2, scale = 0)
     private Byte cycleLength;
+    @Column(name = "MCSRVCD", precision = 3, scale = 0)
     private Integer serviceCode;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MMID", nullable = false)
+    @NotNull
     private Members member;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CTID", nullable = false)
+    @NotNull
     private CardType cardType;
+    @Column(name = "MCSTSRSN", nullable = false, precision = 2, scale = 0)
+    @NotNull
     private Byte statusReason;
+    @Column(name = "MCLSTRNDT", nullable = false)
     private Date lastTransactionDate;
-    
+    @Column(name = "MCISURSN", nullable = false, precision = 2, scale = 0)
+    @NotNull
     private Byte issueReason;
+    @Column(name = "MCTRACK1", length = 79)
+    @Length(max = 70)
     private String track1;
+    @Column(name = "MCTRACK2", length = 40)
+    @Length(max = 40)
     private String track2;
+    @Column(name = "MCTRACK3", length = 107)
+    @Length(max = 107)
     private String track3;
     
     // //////////////////////////////
     // /// Setters and Getters /// //
     // //////////////////////////////
     
-    @Id
-    @Column(name = "MCPAN", unique = true, nullable = false, length = 19)
-    @Length(max = 19)
-    @NotNull
+    
     public String getPan()
     {
 
@@ -65,7 +102,7 @@ public class MemberCard implements Serializable
 	this.pan = pan;
     }
     
-    @Column(name = "MCFLRLMT", precision = 14)
+    
     public BigDecimal getFloorLimit()
     {
 
@@ -78,7 +115,7 @@ public class MemberCard implements Serializable
 	this.floorLimit = floorLimit;
     }
     
-    @Column(name = "MCOTB", precision = 14)
+    
     public BigDecimal getOpenToBuy()
     {
 
@@ -91,16 +128,14 @@ public class MemberCard implements Serializable
 	this.openToBuy = openToBuy;
     }
     
-    @Column(name = "MCSTS", nullable = false, precision = 2, scale = 0)
-    @NotNull
+    
     public Byte getStatus()
     {
 
 	return status;
     }
     
-    @Temporal(TemporalType.DATE)
-    @Column(name = "MCSTSDT", nullable = false, length = 7)
+   
     public Date getStatusDate()
     {
 
@@ -113,8 +148,7 @@ public class MemberCard implements Serializable
 	this.statusDate = statusDate;
     }
     
-    @Temporal(TemporalType.DATE)
-    @Column(name = "MCISSDT", nullable = false, length = 7)
+   
     public Date getIssueDate()
     {
 
@@ -127,8 +161,7 @@ public class MemberCard implements Serializable
 	this.issueDate = issueDate;
     }
     
-    @Temporal(TemporalType.DATE)
-    @Column(name = "MCEXPDT", length = 7)
+ 
     public Date getExpirationDate()
     {
 
@@ -141,9 +174,7 @@ public class MemberCard implements Serializable
 	this.expirationDate = expirationDate;
     }
     
-    @Column(name = "MCPANCVV", nullable = false, length = 3)
-    @Length(max = 3)
-    @NotNull
+
     public String getPanCvv()
     {
 
@@ -156,7 +187,7 @@ public class MemberCard implements Serializable
 	this.panCvv = panCvv;
     }
     
-    @Column(name = "MCPINBLK")
+   
     public byte[] getPinBlock()
     {
 
@@ -169,8 +200,7 @@ public class MemberCard implements Serializable
 	this.pinBlock = pinBlock;
     }
     
-    @Column(name = "MCPANPVV", length = 4)
-    @Length(max = 4)
+
     public String getPanPvv()
     {
 
@@ -183,8 +213,7 @@ public class MemberCard implements Serializable
 	this.panPvv = panPvv;
     }
     
-    @Temporal(TemporalType.DATE)
-    @Column(name = "MCCYCLBDT", length = 7)
+ 
     public Date getCycleBeginDate()
     {
 
@@ -197,7 +226,6 @@ public class MemberCard implements Serializable
 	this.cycleBeginDate = cyclebeginDate;
     }
     
-    @Column(name = "MCCYCLEN", precision = 2, scale = 0)
     public Byte getCycleLength()
     {
 
@@ -210,7 +238,6 @@ public class MemberCard implements Serializable
 	this.cycleLength = cycleLength;
     }
     
-    @Column(name = "MCSRVCD", precision = 3, scale = 0)
     public Integer getServiceCode()
     {
 
@@ -223,24 +250,21 @@ public class MemberCard implements Serializable
 	this.serviceCode = serviceCode;
     }
     
-    @Column(name = "MCSTSRSN", nullable = false, precision = 2, scale = 0)
-    @NotNull
+
     public Byte getStatusReason()
     {
 
 	return statusReason;
     }
     
-    @Column(name = "MCISURSN", nullable = false, precision = 2, scale = 0)
-    @NotNull
+
     public Byte getIssueReason()
     {
 
 	return issueReason;
     }
     
-    @Column(name = "MCTRACK1", length = 79)
-    @Length(max = 70)
+   
     public String getTrack1()
     {
 
@@ -253,8 +277,7 @@ public class MemberCard implements Serializable
 	this.track1 = track1;
     }
     
-    @Column(name = "MCTRACK2", length = 40)
-    @Length(max = 40)
+  
     public String getTrack2()
     {
 
@@ -267,8 +290,7 @@ public class MemberCard implements Serializable
 	this.track2 = track2;
     }
     
-    @Column(name = "MCTRACK3", length = 107)
-    @Length(max = 107)
+   
     public String getTrack3()
     {
 
@@ -281,9 +303,7 @@ public class MemberCard implements Serializable
 	this.track3 = track3;
     }
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "MMID", nullable = false)
-    @NotNull
+   
     public Members getMember()
     {
 
@@ -296,9 +316,7 @@ public class MemberCard implements Serializable
 	this.member = member;
     }
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CTID", nullable = false)
-    @NotNull
+    
     public CardType getCardType()
     {
 
@@ -314,7 +332,6 @@ public class MemberCard implements Serializable
     /**
      * @return the lastTransactionDate
      */
-    @Column(name = "MCLSTRNDT", nullable = false)
     public Date getLastTransactionDate()
     {
 
@@ -502,10 +519,8 @@ public class MemberCard implements Serializable
      * @see java.lang.Object#toString()
      */
     @Override
-    public String toString()
-    {
-
-	return "MemberCard [member=" + member + ", pan=" + pan + "]";
+    public String toString(){
+    	return "MemberCard [member=" + member + ", pan=" + pan + "]";
     }
     
 }

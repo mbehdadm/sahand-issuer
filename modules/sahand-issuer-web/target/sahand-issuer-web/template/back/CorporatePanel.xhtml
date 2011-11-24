@@ -1,0 +1,115 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+
+	<h:form>
+		<p:panel id="noBorder" style="margin:10px;" styleClass="noBorder">
+
+
+			<p:menu styleClass="noBorder">
+
+				<p:menuitem value="#{messages['menu.wall']}"
+					action="/CorporateHome.xhtml" ajax="false"
+					icon="ui-icon ui-icon-disk" />
+				<p:menuitem value="#{messages['menu.info']}"
+					action="/pages/institute/Info.xhtml" ajax="false"
+					icon="ui-icon ui-icon-disk" />
+				<!-- <p:menuitem value="#{messages['menu.member.list']}"
+					action="/pages/member/MemberList.xhtml" ajax="false"
+					icon="ui-icon ui-icon-disk" /> -->
+			</p:menu>
+			<p:menu type="tiered" styleClass="noBorder">
+				<p:submenu label="#{messages['menu.member.list']}"
+					icon="ui-icon ui-icon-class">
+					
+					<p:menuitem value="#{messages['menu.member.register.list']}"
+						action="/pages/member/MemberList.xhtml"
+						icon="ui-icon ui-icon-disk" ajax="false">
+						<f:setPropertyActionListener target="#{memberAgent.action}"
+							value="RegisterMembers" />
+					</p:menuitem>
+					
+					<p:menuitem value="#{messages['menu.member.attendance.list']}"
+						action="/pages/member/MemberList.xhtml"
+						icon="ui-icon ui-icon-disk" ajax="false">
+						<f:setPropertyActionListener target="#{memberAgent.action}"
+							value="AttendanceMembers" />
+					</p:menuitem>
+					
+					
+					<p:menuitem value="#{messages['menu.member.create']}"
+						action="/pages/member/CreateMember.xhtml"
+						icon="ui-icon ui-icon-disk" ajax="false">
+						<f:setPropertyActionListener target="#{memberAgent.action}"
+							value="CreateMembers" />
+					</p:menuitem>
+					
+					<p:menuitem value="#{messages['menu.member.find']}"
+						action="/pages/member/CreateMember.xhtml"
+						icon="ui-icon ui-icon-disk" ajax="false">
+						<f:setPropertyActionListener target="#{memberAgent.action}"
+							value="FindMembers" />
+					</p:menuitem>
+					
+					 
+				</p:submenu>
+			</p:menu>
+			<p:menu styleClass="noBorder">
+
+				<p:menuitem value="#{messages['menu.corporate.list']}"
+					action="/pages/worker/WorkerList.xhtml" ajax="false"
+					icon="ui-icon ui-icon-disk" />
+
+				<p:menuitem value="#{messages['menu.place.list']}"
+					action="/pages/place/PlaceList.xhtml" ajax="false"
+					icon="ui-icon ui-icon-disk" />
+			</p:menu>
+			<p:menu type="tiered" styleClass="noBorder">
+
+				<p:submenu label="#{messages['menu.member.classes']}"
+					icon="ui-icon ui-icon-class">
+					<p:menuitem value="#{messages['menu.member.register.classes']}"
+						image="ui-icon ui-icon-create"
+						action="/pages/class/CreateClass.xhtml" ajax="false">
+						<f:setPropertyActionListener target="#{placeAgent.action}"
+							value="Create" />
+					</p:menuitem>
+
+					<p:menuitem value="#{messages['menu.member.register.classes']}"
+						action="/pages/class/CorporateClass.xhtml"
+						icon="ui-icon ui-icon-disk" ajax="false">
+						<f:setPropertyActionListener target="#{memberAgent.action}"
+							value="RegisterCorporate" />
+					</p:menuitem>
+
+
+					<p:menuitem value="#{messages['menu.member.attendance.classes']}"
+						action="/pages/class/CorporateClass.xhtml"
+						icon="ui-icon ui-icon-disk" ajax="false">
+						<f:setPropertyActionListener target="#{memberAgent.action}"
+							value="AttendanceCorporate" />
+					</p:menuitem>
+
+				</p:submenu>
+			</p:menu>
+			<p:menu styleClass="noBorder">
+
+				<p:menuitem value="#{messages['menu.member.register']}"
+					action="/pages/register/CorporateRegister.xhtml" ajax="false"
+					icon="ui-icon ui-icon-disk" />
+
+				<p:menuitem value="#{messages['menu.setting']}"
+					onclick="settingDialog.show()" icon="ui-icon ui-icon-disk" />
+
+			</p:menu>
+			<ui:include src="/Setting.xhtml" />
+		</p:panel>
+	</h:form>
+
+
+</ui:composition>

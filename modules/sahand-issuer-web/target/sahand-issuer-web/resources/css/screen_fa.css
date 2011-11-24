@@ -1,0 +1,144 @@
+body {
+   margin: 0;
+   padding: 0;
+   background-color: gray;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+#document {
+   /*  background-color: white; */
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    /* border: solid 1px white; */
+    float: left;
+    direction: rtl;
+}
+
+#title {
+    float: right;
+    padding: 1px 0 6px 15px;
+}
+
+#header {
+    float: right;
+    width: 100%;
+    height: auto;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: medium;
+    min-width: 1000px;
+   /*  background: url("../img/hdr.bg.png") 0 0 repeat-x; */
+}
+
+/* #menuForm {
+    color: #C7B299;
+    float: left;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: medium;
+    text-align: left;
+    padding-top: 14px;
+    padding-right: 15px;
+} */
+#container {
+    margin-left:auto;
+    margin-right:auto;
+    width: 1000px;
+    border: solid 1px white;
+    font-size: medium;
+    /* background: url(../image/hdr.bar.jpg) 0 0 repeat-x; */
+}
+
+#footer {
+    clear: both;
+    margin-top: 10px;
+    float: center;
+    padding: 10px;
+    border-top: 1px solid #C3BBB6;
+    width: 100%;
+    text-align: center;
+    color:white;
+    font-size: small;
+    font-family: helvetica, Arial;
+    min-width: 1000px;
+}
+#baner{
+   /* margin: 0 auto; */
+  /*  padding: 0 20px 10px 20px; */
+  /*  border: 1px solid #666666; */
+  float:left;
+   height:auto;
+   background: #FFFFFF url(#{request.contextPath}/resources/gfx/banner.png) no-repeat;	
+}
+#panel{
+	
+}
+#menuPanel{
+	float: right;
+	padding-left: 5px;
+	width: 250px;
+}
+
+#center {
+   float: right;
+   margin-bottom: 10px;
+   margin-top: 10px;
+   width: 740px;
+    /* background: #FFFFFF url(../img/cnt.bg.gif) 0 0 repeat-x; */
+}
+
+#panelLeft{
+	float:right;
+	margin:10px;
+	
+}
+#panelRight{
+	width:300px;
+	float:left;
+	margin:10px; 
+}
+
+.button{
+	margin-left:30px;
+}
+.noBorder{
+	width: auto;
+	border: 0px;
+	margin:10px;	
+}
+.createLink{
+	float: left;
+}
+/* .panelMenu{
+	
+	
+} */
+.label {
+	float:right;
+    font-weight: bold;
+    width:100px;
+    color: #5E5147;
+}
+.entry .input, .entry .output, .entry .error {
+    float: right;
+    width: 350px;
+    text-align: right;
+}
+
+.ui-dialog .ui-dialog-content{
+	float:right;
+}
+.wijmo-wijmenu-child{
+	min-width: 200px;
+}
+.ui-corner-right {
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.required{
+	color: red;
+}
+/* .ui-widget {
+	font-size: 75%;
+}  */

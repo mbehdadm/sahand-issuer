@@ -87,8 +87,7 @@ public class MemberManagementImpl {
 				Members member_  = new Members();
 				while(member_ != null){
 					String key = IssuerConfigLoader.getValue("member-seq");
-					memberID = memberInformation.getMemberId() == null ? new String() : String.valueOf(memberInformation.getMemberId());
-					memberID = SequenceGenerator.sequenceGenerator(entityManager, Members.class, memberID,key);
+					memberID = SequenceGenerator.sequenceGenerator(entityManager, memberID,key,null);
 					member_ = find(Long.valueOf(memberID));
 				}
 			}
@@ -97,8 +96,8 @@ public class MemberManagementImpl {
 				if(member_ != null)
 					throw new IssuerException("duplicate.member.exist");
 				String key = IssuerConfigLoader.getValue("member-seq");
-				memberID = memberInformation.getMemberId() == null ? new String() : String.valueOf(memberInformation.getMemberId());
-				memberID = SequenceGenerator.sequenceGenerator(null, Members.class, memberID,key);
+				memberID = String.valueOf(memberInformation.getMemberId());
+				memberID = SequenceGenerator.sequenceGenerator(null, memberID,key,null);
 			}
 			member.setMemberId(Long.valueOf(memberID));
 
@@ -158,10 +157,13 @@ public class MemberManagementImpl {
 		try {
 
 			members = entityManager.find(Members.class, memberId);
-
+			if(members == null)
+				throw new IssuerException("member.not.find");
 			entityManager.remove(members);
 
-		} catch (Exception e) {
+		} catch (IssuerException e) {
+			throw e;
+		}catch (Exception e) {
 			e.printStackTrace();
 			throw new IssuerException("member.delete.exception");
 

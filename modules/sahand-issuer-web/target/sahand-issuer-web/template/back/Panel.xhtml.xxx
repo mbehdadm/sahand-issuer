@@ -1,0 +1,43 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+
+
+<h:form>
+	<p:accordionPanel effect="bounceslide" autoHeight="false">
+		
+			<p:tab title="Members">
+
+				<p:menu>
+					<p:menuitem value="Register" url="/pages/memberRegister.jsf" />
+					<p:menuitem value="List" url="/pages/memberList.jsf" />
+				</p:menu>
+				<!-- </h:form> -->
+
+			</p:tab>
+			<p:tab title="Teachers">
+				<!-- <h:form> -->
+				<p:menu>
+					<p:menuitem value="Register" url="/pages/teacherRegister.jsf" />
+					<p:menuitem value="List" url="/pages/teacherList.jsf" />
+				</p:menu>
+				<!-- </h:form> -->
+			</p:tab>
+			<p:tab title="Club">
+				<!-- <h:form> -->
+				<p:menu>
+					<p:menuitem value="Branches" url="/pages/corporateBranches.jsf" />
+					<p:menuitem value="Classes" url="/pages/corporateClasses.jsf" />
+					<p:menuitem value="Gallery" url="/pages/corporateGallery.jsf" />
+				</p:menu>
+				<!-- </h:form> -->
+			</p:tab>
+		
+	</p:accordionPanel>
+</h:form>
+</ui:composition>

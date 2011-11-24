@@ -14,6 +14,8 @@ public class CardTypeInformation implements Serializable {
 	private Short defaultServiceCode;
 	private Byte trackDataFormat;
 	private String description;
+	//generate type
+	private boolean autoGenerate;
 	
 	public Integer getId() {
 		return id;
@@ -75,6 +77,13 @@ public class CardTypeInformation implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public boolean isAutoGenerate() {
+		return autoGenerate;
+	}
+	public void setAutoGenerate(boolean autoGenerate) {
+		this.autoGenerate = autoGenerate;
+	}
 	@Override
 	public String toString() {
 		return "CardTypeInformation [id=" + id + ", panFormat=" + panFormat
@@ -83,7 +92,7 @@ public class CardTypeInformation implements Serializable {
 				+ authentication + ", application=" + application
 				+ ", defaultServiceCode=" + defaultServiceCode
 				+ ", trackDataFormat=" + trackDataFormat + ", description="
-				+ description + "]";
+				+ description + ", autoGenerate=" + autoGenerate + "]";
 	}
 	
 	

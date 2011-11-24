@@ -5,9 +5,12 @@ import com.sahand.issuer.message.IssuerSetupResponse;
 
 public interface IssuerSetup {
 	
-	public IssuerSetupResponse addProgram(IssuerSetupRequest request);
+	public IssuerSetupResponse registerProgram(IssuerSetupRequest request);
 	public IssuerSetupResponse editProgram(IssuerSetupRequest request);
 	public IssuerSetupResponse removeProgram(IssuerSetupRequest request);
+	
+	public IssuerSetupResponse addProgramPartner(IssuerSetupRequest request);
+	public IssuerSetupResponse editProgramPartner(IssuerSetupRequest request);
 	////////modifyCardHolderInfo
 	////    CardAcceptorRs importCardHoldersInfo(CardAcceptorRq rq)
 	//// CardAcceptorRs modifyMember(CardAcceptorRq rq)
@@ -16,7 +19,12 @@ public interface IssuerSetup {
     public IssuerSetupResponse assignCardToMember(IssuerSetupRequest request);
     public IssuerSetupResponse editMemberCard(IssuerSetupRequest request);
     
-    public IssuerSetupResponse modifyCardStatus(IssuerSetupRequest request);
+    public IssuerSetupResponse registerCardType(IssuerSetupRequest request);
+	public IssuerSetupResponse editCardType(IssuerSetupRequest request);
+	
+	public IssuerSetupResponse registerCreditOrganization(IssuerSetupRequest request);
+	public IssuerSetupResponse editCreditOrganization(IssuerSetupRequest request);
+	
     
 //    public IssuerSetupResponse registerMissingTransaction(IssuerSetupRequest request);
 ////    public CardAcceptorRs acpRegisterMissingTransaction(CardAcceptorRq rq)

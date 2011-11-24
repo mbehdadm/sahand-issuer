@@ -1,0 +1,78 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:cp="http://http://java.sun.com/jsf/composite/components/property"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+
+
+	<h:panelGrid columns="2" columnClasses="column" cellpadding="5">
+
+
+		<cp:input id="name" label="#{messages['member.name']}" required="true">
+			<p:inputText id="input" value="#{memberInformation.name}" />
+		</cp:input>
+
+		<cp:input id="latinName" label="#{messages['member.latinName']}"
+			required="true">
+			<p:inputText id="input" value="#{memberInformation.latinName}" />
+		</cp:input>
+
+		<cp:input id="loginUser" label="#{messages['member.loginUser']}"
+			required="true">
+			<p:inputText id="input" value="#{memberInformation.loginUser}" />
+		</cp:input>
+
+		<cp:input id="loginPassword"
+			label="#{messages['member.loginPassword']}" required="true">
+			<p:inputText id="input" value="#{memberInformation.loginPassword}" />
+		</cp:input>
+
+		<h:panelGrid columns="2">
+			<h:outputLabel value="#{messages['member.status']}" for="lg" />
+			<p:autoComplete id="lg" 
+				dropdown="true" 
+				itemValue="#{l}" 
+				itemLabel="#{l.description}" 
+				value="#{memberInformation.statusDto}" 
+				converter="status"
+				forceSelection="true"
+				completeMethod="#{lookupLoader.getTag('MemberType')}" />
+		</h:panelGrid>
+
+
+		<h:panelGrid columns="2">
+			<h:outputLabel value="#{messages['person.gender']}" for="lg" />
+			<p:autoComplete id="lg" dropdown="true" itemLabel="#{l.description}"
+				itemValue="#{l}" converter="gender" forceSelection="true"
+				completeMethod="#{lookupLoader.getTag('Gender')}" />
+		</h:panelGrid>
+
+		<cp:input id="birthday" label="#{messages['person.birthday']}">
+			<p:calendar id="input" value="#{memberInformation.birthday}">
+
+			</p:calendar>
+		</cp:input>
+
+		<cp:input id="phone" label="#{messages['person.phone']}">
+			<p:inputText id="input" value="#{memberInformation.homeTel}" />
+		</cp:input>
+		<cp:input id="mobile" label="#{messages['person.mobile']}">
+			<p:inputText id="input" value="#{memberInformation.cellPhone}" />
+		</cp:input>
+		<cp:input id="email" label="#{messages['person.email']}">
+			<p:inputText id="input" value="#{memberInformation.email}" />
+		</cp:input>
+		<cp:input id="address" label="#{messages['person.home.address']}">
+			<p:inputTextarea value="#{memberInformation.homeAddress}"
+				style="width:300px;height:100px;" effectDuration="400" />
+		</cp:input>
+
+
+	</h:panelGrid>
+
+
+</ui:composition>

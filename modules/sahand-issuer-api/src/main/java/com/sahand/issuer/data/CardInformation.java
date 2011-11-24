@@ -26,6 +26,8 @@ public class CardInformation implements Serializable {
 	private String track1;
 	private String track2;
 	private String track3;
+	//generate type
+	private boolean autoGenerate;
 	
 	
 	public String getPan() {
@@ -142,6 +144,13 @@ public class CardInformation implements Serializable {
 	public void setTrack3(String track3) {
 		this.track3 = track3;
 	}
+	
+	public boolean isAutoGenerate() {
+		return autoGenerate;
+	}
+	public void setAutoGenerate(boolean autoGenerate) {
+		this.autoGenerate = autoGenerate;
+	}
 	@Override
 	public String toString() {
 		return "CardInformation [pan=" + pan + ", floorLimit=" + floorLimit
@@ -154,7 +163,8 @@ public class CardInformation implements Serializable {
 				+ serviceCode + ", statusReason=" + statusReason
 				+ ", lastTransactionDate=" + lastTransactionDate
 				+ ", issueReason=" + issueReason + ", track1=" + track1
-				+ ", track2=" + track2 + ", track3=" + track3 + "]";
+				+ ", track2=" + track2 + ", track3=" + track3
+				+ ", autoGenerate=" + autoGenerate + "]";
 	}
 
 

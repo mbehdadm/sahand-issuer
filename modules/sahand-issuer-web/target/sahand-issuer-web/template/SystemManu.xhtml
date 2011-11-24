@@ -1,0 +1,37 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form>
+			<p:menubar>
+				<p:menuitem value="#{messages['shanli.acceptor']}" action="#{redirectManagment.systemRedirect(1)}"
+							oncomplete="handleComplete(xhr, status, args)">
+				</p:menuitem>
+				<p:menuitem value="#{messages['shanli.holder']}" action="#{redirectManagment.systemRedirect(2)}"
+							oncomplete="handleComplete(xhr, status, args)">
+				</p:menuitem>
+				<p:menuitem value="#{messages['payment.acceptor']}" action="#{redirectManagment.systemRedirect(3)}"
+							oncomplete="handleComplete(xhr, status, args)">
+				</p:menuitem>
+				<p:menuitem value="#{messages['booking.system']}" action="#{redirectManagment.systemRedirect(4)}"
+							oncomplete="handleComplete(xhr, status, args)">
+				</p:menuitem>
+				<p:menuitem value="#{messages['reporting']}" action="#{redirectManagment.systemRedirect(5)}"
+							oncomplete="handleComplete(xhr, status, args)">
+				</p:menuitem>
+				<p:menuButton> 
+					<p:menuitem value="#{messages['home']}" url="/home.xhtml" />
+					<p:menuitem value="##{messages['appearance.setting']}" action="settingDialog.show()" />
+					
+				</p:menuButton>
+				<ui:include src="/Setting.xhtml" />
+				
+		</p:menubar>
+
+	</h:form>
+</ui:composition>

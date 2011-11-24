@@ -83,8 +83,7 @@ public class ProgramManagementImpl {
 				Program program_  = new Program();
 				while(program_ != null){
 					String key = IssuerConfigLoader.getValue("program-seq");
-					programID = programInformation.getProgramId() == null ? new String() : String.valueOf(programInformation.getProgramId());
-					programID = SequenceGenerator.sequenceGenerator(entityManager, Program.class, programID,key);
+					programID = SequenceGenerator.sequenceGenerator(entityManager,programID,key,null);
 					program_ = find(Long.valueOf(programID));
 				}
 			}
@@ -93,8 +92,8 @@ public class ProgramManagementImpl {
 				if(program_ != null)
 					throw new IssuerException("duplicate.program.exist");
 				String key = IssuerConfigLoader.getValue("program-seq");
-				programID = programInformation.getProgramId() == null ? new String() : String.valueOf(programInformation.getProgramId());
-				programID = SequenceGenerator.sequenceGenerator(null, Program.class, programID,key);
+				programID = String.valueOf(programInformation.getProgramId());
+				programID = SequenceGenerator.sequenceGenerator(null,  programID,key,null);
 			}
 			program.setId(Long.valueOf(programID));
 
@@ -154,10 +153,13 @@ public class ProgramManagementImpl {
 		try {
 
 			program = entityManager.find(Program.class, programId);
-
+			if(program == null)
+				throw new IssuerException("program.not.find");
 			entityManager.remove(program);
 
-		} catch (Exception e) {
+		} catch (IssuerException e) {
+			throw e;
+		}catch (Exception e) {
 			e.printStackTrace();
 			throw new IssuerException("program.delete.exception");
 

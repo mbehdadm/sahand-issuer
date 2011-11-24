@@ -33,6 +33,12 @@
 		</dependency>
 		
      
+     	<dependency>
+			<groupId>jboss.jbossws-spi</groupId>
+			<artifactId>jbossws-spi</artifactId>
+			<version>1.0.2.GA</version>
+			<scope>provided</scope>
+		</dependency>
    </dependencies>
 	
 </project>

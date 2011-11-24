@@ -48,13 +48,10 @@ public class ProgramParameterManagementImpl {
 
 	
 	
-	public ProgramParameter edit(Long programId,ProgramParameterInformation programParameterInformation) throws Exception {
+	public ProgramParameter edit(ProgramParameterId id,ProgramParameterInformation programParameterInformation) throws Exception {
 
 		ProgramParameter programParameter = null;
 		try {
-			ProgramParameterId id = new ProgramParameterId();
-			id.setProgramId(programId);
-			id.setProgramParameterType(programParameterInformation.getProgramParameterTypes());
 			programParameter = find(id);
 			if(programParameter == null)
 				throw new IssuerException("program.parameter.not.find");
@@ -69,13 +66,10 @@ public class ProgramParameterManagementImpl {
 	}
 	
 
-	public ProgramParameter create(Long programId,ProgramParameterInformation programParameterInformation) throws Exception {
+	public ProgramParameter create(ProgramParameterId id,ProgramParameterInformation programParameterInformation) throws Exception {
 
 		ProgramParameter programParameter = null;
 		try {
-			ProgramParameterId id = new ProgramParameterId();
-			id.setProgramId(programId);
-			id.setProgramParameterType(programParameterInformation.getProgramParameterTypes());
 			ProgramParameter programParameter_ = find(id);
 			if(programParameter_ != null)
 				throw new IssuerException("duplicate.program.parameter.exist");

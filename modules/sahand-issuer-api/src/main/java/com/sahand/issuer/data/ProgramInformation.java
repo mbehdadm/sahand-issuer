@@ -7,7 +7,6 @@ import java.util.List;
 public class ProgramInformation implements Serializable {
 
     private Long programId;
-    private boolean autoGenerate;
     private String name;
     private String displayName;
     private String description;
@@ -16,7 +15,9 @@ public class ProgramInformation implements Serializable {
 	
     private List<ProgramParameterInformation> parameterInformations = new ArrayList<ProgramParameterInformation>();
 	
-	
+    //generate type
+    private boolean autoGenerate;
+    
 	public Long getProgramId() {
 		return programId;
 	}

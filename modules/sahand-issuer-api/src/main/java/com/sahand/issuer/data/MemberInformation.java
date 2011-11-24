@@ -46,7 +46,7 @@ public class MemberInformation implements Serializable {
 	private String workPostalCode;
 	private String workTel;
 	//member card
-	private List<CardInformation> cardInformations = new ArrayList<CardInformation>();
+//	private List<CardInformation> cardInformations = new ArrayList<CardInformation>();
 	//generate type
 	private boolean autoGenerate = true;
 	
@@ -255,13 +255,13 @@ public class MemberInformation implements Serializable {
 		this.workTel = workTel;
 	}
 	
-	public List<CardInformation> getCardInformations() {
-		return cardInformations;
-	}
-	public void setCardInformations(List<CardInformation> cardInformations) {
-		this.cardInformations = cardInformations;
-	}
-	
+//	public List<CardInformation> getCardInformations() {
+//		return cardInformations;
+//	}
+//	public void setCardInformations(List<CardInformation> cardInformations) {
+//		this.cardInformations = cardInformations;
+//	}
+//	
 	public boolean isAutoGenerate() {
 		return autoGenerate;
 	}
@@ -288,8 +288,8 @@ public class MemberInformation implements Serializable {
 				+ ", postAddress=" + postAddress + ", miprsweburl="
 				+ miprsweburl + ", signature=" + signature + ", workAddress="
 				+ workAddress + ", workPostalCode=" + workPostalCode
-				+ ", workTel=" + workTel + ", cardInformations="
-				+ cardInformations + ", autoGenerate=" + autoGenerate + "]";
+				+ ", workTel=" + workTel + /*", cardInformations="
+				+ cardInformations +*/ ", autoGenerate=" + autoGenerate + "]";
 	}
 	
 	
