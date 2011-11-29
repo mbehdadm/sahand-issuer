@@ -12,9 +12,13 @@ import org.slf4j.Logger;
 
 import com.sahand.common.util.enumeration.OperationType;
 import com.sahand.common.util.logger.SahandLogger;
+import com.sahand.common.util.message.ResponseGenerator;
 import com.sahand.issuer.action.AuthorizerSetupProcessorImpl;
 import com.sahand.issuer.action.MemberSetupProcessorImpl;
+import com.sahand.issuer.action.MissingSetupProcessorImpl;
 import com.sahand.issuer.action.ProgramSetupProcessorImpl;
+import com.sahand.issuer.enumeration.ProcessCode;
+import com.sahand.issuer.enumeration.RegisterarType;
 import com.sahand.issuer.message.IssuerAuthorizerSetupRequest;
 import com.sahand.issuer.message.IssuerAuthorizerSetupResponse;
 import com.sahand.issuer.message.IssuerSetupRequest;
@@ -32,34 +36,84 @@ public class IssuerAuthorizerSetupImpl implements IssuerAuthorizerSetup {
 
 	@EJB
 	private AuthorizerSetupProcessorImpl authorizerSetupProcessor;
+	@EJB
+	private MissingSetupProcessorImpl missingSetupProcessorImpl;
 
 	@Override
 	public IssuerAuthorizerSetupResponse registerMissingTransaction(
 			IssuerAuthorizerSetupRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		IssuerAuthorizerSetupResponse response = new IssuerAuthorizerSetupResponse();
+		MessageContext mc = wsContext.getMessageContext();	
+	    HttpServletRequest req = (HttpServletRequest)mc.get(MessageContext.SERVLET_REQUEST);
+	    String ip = req.getRemoteAddr();
+	    logger.debug("Client Ip : "+ip);
+	    request.setClientIpAddress(ip);
+	    
+		response = missingSetupProcessorImpl.missingFactory(request,ProcessCode.LoyaltyIssuePoints,OperationType.CREATE);
+		return response;
 	}
 
 	@Override
 	public IssuerAuthorizerSetupResponse registerMissingTransactionRedeem(
 			IssuerAuthorizerSetupRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		IssuerAuthorizerSetupResponse response = new IssuerAuthorizerSetupResponse();
+		MessageContext mc = wsContext.getMessageContext();	
+	    HttpServletRequest req = (HttpServletRequest)mc.get(MessageContext.SERVLET_REQUEST);
+	    String ip = req.getRemoteAddr();
+	    logger.debug("Client Ip : "+ip);
+	    request.setClientIpAddress(ip);
+	    
+		response = missingSetupProcessorImpl.missingFactory(request,ProcessCode.LoyaltyPointsRedemption,OperationType.CREATE);
+		return response;
 	}
 
 	@Override
-	public IssuerAuthorizerSetupResponse confirmMissingTransactions(
+	public IssuerAuthorizerSetupResponse modifyMissingTransaction(
 			IssuerAuthorizerSetupRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		IssuerAuthorizerSetupResponse response = new IssuerAuthorizerSetupResponse();
+		MessageContext mc = wsContext.getMessageContext();	
+	    HttpServletRequest req = (HttpServletRequest)mc.get(MessageContext.SERVLET_REQUEST);
+	    String ip = req.getRemoteAddr();
+	    logger.debug("Client Ip : "+ip);
+	    request.setClientIpAddress(ip);
+	    
+		response = missingSetupProcessorImpl.missingFactory(request,ProcessCode.DontCare,OperationType.UPDATE);
+		return response;
 	}
 
 	@Override
 	public IssuerAuthorizerSetupResponse deleteMissingTransaction(
 			IssuerAuthorizerSetupRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		IssuerAuthorizerSetupResponse response = new IssuerAuthorizerSetupResponse();
+		MessageContext mc = wsContext.getMessageContext();	
+	    HttpServletRequest req = (HttpServletRequest)mc.get(MessageContext.SERVLET_REQUEST);
+	    String ip = req.getRemoteAddr();
+	    logger.debug("Client Ip : "+ip);
+	    request.setClientIpAddress(ip);
+	    
+		response = missingSetupProcessorImpl.missingFactory(request,ProcessCode.DontCare,OperationType.Delete);
+		return response;
 	}
+	
+	@Override
+	public IssuerAuthorizerSetupResponse confirmMissingTransactions(
+			IssuerAuthorizerSetupRequest request) {
+	
+		IssuerAuthorizerSetupResponse response = new IssuerAuthorizerSetupResponse();
+		MessageContext mc = wsContext.getMessageContext();	
+	    HttpServletRequest req = (HttpServletRequest)mc.get(MessageContext.SERVLET_REQUEST);
+	    String ip = req.getRemoteAddr();
+	    logger.debug("Client Ip : "+ip);
+	    request.setClientIpAddress(ip);
+	    
+	    response = authorizerSetupProcessor.authorizerFactory(request);
+		return response;
+	}
+
 
 
 	

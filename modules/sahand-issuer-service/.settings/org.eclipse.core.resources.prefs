@@ -1,5 +1,6 @@
-#Wed Nov 16 09:11:28 GMT+03:30 2011
+#Sun Nov 27 17:03:51 IRST 2011
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
+encoding//src/main/resources/Messages_en.properties=ISO-8859-1
 encoding//src/test/java=UTF-8
 encoding/<project>=UTF-8

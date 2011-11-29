@@ -14,7 +14,8 @@ public interface IssuerAuthorizerSetup {
     public IssuerAuthorizerSetupResponse confirmMissingTransactions(IssuerAuthorizerSetupRequest request);
     
     public IssuerAuthorizerSetupResponse deleteMissingTransaction(IssuerAuthorizerSetupRequest request);
-
+    
+    public IssuerAuthorizerSetupResponse modifyMissingTransaction(IssuerAuthorizerSetupRequest request);
     
     //modifyCardAcceptorSpecification go tooo acquirer  ---> editInstitute();
 //    public CardAcceptorRs modifyCardAcceptorSpecification(CardAcceptorRq rq){}

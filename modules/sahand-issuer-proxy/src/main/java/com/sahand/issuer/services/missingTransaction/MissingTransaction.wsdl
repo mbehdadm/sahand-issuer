@@ -1,0 +1,269 @@
+<definitions name="MissingTransactionService" targetNamespace="http://service.loyalty.authorizer.sahand.com/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://service.loyalty.authorizer.sahand.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ <types>
+  <xs:schema targetNamespace="http://service.loyalty.authorizer.sahand.com/" version="1.0" xmlns:tns="http://service.loyalty.authorizer.sahand.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="confirmManualMissingTransaction" type="tns:confirmManualMissingTransaction"/>
+   <xs:element name="confirmManualMissingTransactionResponse" type="tns:confirmManualMissingTransactionResponse"/>
+   <xs:element name="getProgramRefrences" type="tns:getProgramRefrences"/>
+   <xs:element name="getProgramRefrencesResponse" type="tns:getProgramRefrencesResponse"/>
+   <xs:element name="registerManualMissingTransaction" type="tns:registerManualMissingTransaction"/>
+   <xs:element name="registerManualMissingTransactionResponse" type="tns:registerManualMissingTransactionResponse"/>
+   <xs:element name="registerOfflineMissingTransaction" type="tns:registerOfflineMissingTransaction"/>
+   <xs:element name="registerOfflineMissingTransactionResponse" type="tns:registerOfflineMissingTransactionResponse"/>
+   <xs:complexType name="getProgramRefrences">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="arg0" type="tns:authorizerRequest"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="authorizerRequest">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="msg" type="xs:string"/>
+     <xs:element minOccurs="0" name="pinData" type="tns:changePinData"/>
+     <xs:element minOccurs="0" name="trnasactionData" type="tns:transactionData"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="changePinData">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="newPin" type="xs:base64Binary"/>
+     <xs:element minOccurs="0" name="pan" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="transactionData">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="additionalAmount" type="xs:string"/>
+     <xs:element minOccurs="0" name="amountTxn" type="xs:decimal"/>
+     <xs:element minOccurs="0" name="cardAcceptorId" type="xs:string"/>
+     <xs:element minOccurs="0" name="dateMissingTrn" type="xs:dateTime"/>
+     <xs:element minOccurs="0" name="localMissingTrnDate" type="xs:dateTime"/>
+     <xs:element minOccurs="0" name="MTI" type="xs:short"/>
+     <xs:element minOccurs="0" name="message" type="xs:string"/>
+     <xs:element minOccurs="0" name="missingTrnId" type="xs:long"/>
+     <xs:element minOccurs="0" name="PAN" type="xs:string"/>
+     <xs:element minOccurs="0" name="PINBloc" type="xs:string"/>
+     <xs:element minOccurs="0" name="processCode" type="xs:long"/>
+     <xs:element minOccurs="0" name="programId" type="xs:long"/>
+     <xs:element minOccurs="0" name="refrenceData" type="xs:string"/>
+     <xs:element minOccurs="0" name="responseCode" type="xs:int"/>
+     <xs:element minOccurs="0" name="responseCodeEnum" type="xs:string"/>
+     <xs:element minOccurs="0" name="responseCodeException" type="tns:responseCodeException"/>
+     <xs:element minOccurs="0" name="terminalId" type="xs:string"/>
+     <xs:element minOccurs="0" name="traceNumber" type="xs:long"/>
+     <xs:element minOccurs="0" name="transactionDate" type="xs:dateTime"/>
+     <xs:element minOccurs="0" name="transactionId" type="xs:long"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getProgramRefrencesResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="return" type="tns:authorizerResponse"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="authorizerResponse">
+    <xs:complexContent>
+     <xs:extension base="tns:responseBase">
+      <xs:sequence>
+       <xs:element minOccurs="0" name="missingResponse" type="xs:string"/>
+       <xs:element minOccurs="0" name="msg" type="xs:string"/>
+       <xs:element maxOccurs="unbounded" minOccurs="0" name="refrences" nillable="true" type="tns:programRefrences"/>
+       <xs:element minOccurs="0" name="result" type="xs:boolean"/>
+       <xs:element minOccurs="0" name="transactionDate" type="xs:dateTime"/>
+       <xs:element minOccurs="0" name="transactionId" type="xs:long"/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="responseBase">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="myResponse" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="programRefrences">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="code" type="xs:string"/>
+     <xs:element minOccurs="0" name="factorNumber" type="tns:programRefrenceSpecification"/>
+     <xs:element minOccurs="0" name="introducerCardNumber" type="tns:programRefrenceSpecification"/>
+     <xs:element minOccurs="0" name="name" type="xs:string"/>
+     <xs:element minOccurs="0" name="numOfBox" type="tns:programRefrenceSpecification"/>
+     <xs:element minOccurs="0" name="pointOfFactor" type="tns:programRefrenceSpecification"/>
+     <xs:element minOccurs="0" name="voucherNumber" type="tns:programRefrenceSpecification"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="programRefrenceSpecification">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="isRender" type="xs:string"/>
+     <xs:element minOccurs="0" name="isRequire" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="confirmManualMissingTransaction">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="arg0" type="tns:authorizerRequest"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="confirmManualMissingTransactionResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="return" type="tns:authorizerResponse"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="registerManualMissingTransaction">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="arg0" type="tns:authorizerRequest"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="registerManualMissingTransactionResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="return" type="tns:authorizerResponse"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="registerOfflineMissingTransaction">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="arg0" type="tns:authorizerRequest"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="registerOfflineMissingTransactionResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="return" type="tns:authorizerResponse"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="responseCodeException">
+    <xs:restriction base="xs:string">
+     <xs:enumeration value="LOADOFCARDNOTSUCCESFULL"/>
+     <xs:enumeration value="CARDISNOTVALID"/>
+     <xs:enumeration value="PINISNOTVALID"/>
+     <xs:enumeration value="MEMBERISNOTACTIVE"/>
+     <xs:enumeration value="AUTHENTICATEISFAILED"/>
+     <xs:enumeration value="AUTHORIZEISFAILED"/>
+     <xs:enumeration value="CARDHASNOTSUFFICCIENTFUNDS"/>
+     <xs:enumeration value="CANNOTDECREASEOTB"/>
+     <xs:enumeration value="UNKNOWNEXCEPTIONOCCURRED"/>
+     <xs:enumeration value="CARDWITHPINNOTFOUND"/>
+     <xs:enumeration value="STATUSOFCARDISNOTOK"/>
+     <xs:enumeration value="PROGRAMNOTFOUND"/>
+     <xs:enumeration value="PROGRAMISNOTVALID"/>
+     <xs:enumeration value="ServiceCodeIsNotAllowsTxn"/>
+     <xs:enumeration value="AUTHORIZETXNISFALSE"/>
+     <xs:enumeration value="IsoMessageIsNull"/>
+     <xs:enumeration value="CANNOTCREATEGENERALRESPONSE"/>
+     <xs:enumeration value="ISNOTCREDITORGPARTNEROFPROGRAM"/>
+     <xs:enumeration value="CARDTYPENOTPARTICIPATEINPROGRAM"/>
+     <xs:enumeration value="CANNOTGETPARAMETERS"/>
+     <xs:enumeration value="CardAcceptorWithThisCATerminalIdIsNotExist"/>
+     <xs:enumeration value="CardAcceptorIdCanNotBeNull"/>
+     <xs:enumeration value="ClassNotFound"/>
+     <xs:enumeration value="canNotModifyMemberCard"/>
+     <xs:enumeration value="ProgramIdIsNull"/>
+     <xs:enumeration value="CANNOTINSERTAUTHORIZERTRANSACTIONRESPONSE"/>
+     <xs:enumeration value="canNotReversalTransaction"/>
+     <xs:enumeration value="SAVEOFTRANSACTIONRESPONSEISFAILED"/>
+     <xs:enumeration value="CardProgramAccountNotFound"/>
+     <xs:enumeration value="canNotModifyMemberCardProgramAccount"/>
+     <xs:enumeration value="canNotSaveNewMemberCardProgramAccount"/>
+     <xs:enumeration value="canNotDeactiveCard"/>
+     <xs:enumeration value="ProgramRefrenceDataIsNull"/>
+     <xs:enumeration value="FactorNumberIsNull"/>
+     <xs:enumeration value="FactorNumberIsNotUnique"/>
+     <xs:enumeration value="PointOfFactorIsNull"/>
+     <xs:enumeration value="VoucherNumberIsNull"/>
+     <xs:enumeration value="PanIsNull"/>
+     <xs:enumeration value="MessageIsNull"/>
+     <xs:enumeration value="CardAcceptorIdIsNull"/>
+     <xs:enumeration value="AmountTransactionIsNull"/>
+     <xs:enumeration value="DateTransactionIsNull"/>
+     <xs:enumeration value="TerminalIdIsNull"/>
+     <xs:enumeration value="yourPresentDedicated"/>
+     <xs:enumeration value="youNotAllowedToGetPresent"/>
+     <xs:enumeration value="plaqueNumberIsNull"/>
+     <xs:enumeration value="PinChargeIsNull"/>
+     <xs:enumeration value="minOfPointIsNull"/>
+     <xs:enumeration value="authorizerTypeIsNull"/>
+     <xs:enumeration value="thisCardHasNoTransaction"/>
+     <xs:enumeration value="CardNotMatchWithPlaque"/>
+     <xs:enumeration value="thisCardIsCapture"/>
+    </xs:restriction>
+   </xs:simpleType>
+  </xs:schema>
+ </types>
+ <message name="MissingTransaction_registerOfflineMissingTransactionResponse">
+  <part element="tns:registerOfflineMissingTransactionResponse" name="registerOfflineMissingTransactionResponse"/>
+ </message>
+ <message name="MissingTransaction_getProgramRefrences">
+  <part element="tns:getProgramRefrences" name="getProgramRefrences"/>
+ </message>
+ <message name="MissingTransaction_confirmManualMissingTransactionResponse">
+  <part element="tns:confirmManualMissingTransactionResponse" name="confirmManualMissingTransactionResponse"/>
+ </message>
+ <message name="MissingTransaction_registerManualMissingTransaction">
+  <part element="tns:registerManualMissingTransaction" name="registerManualMissingTransaction"/>
+ </message>
+ <message name="MissingTransaction_confirmManualMissingTransaction">
+  <part element="tns:confirmManualMissingTransaction" name="confirmManualMissingTransaction"/>
+ </message>
+ <message name="MissingTransaction_registerOfflineMissingTransaction">
+  <part element="tns:registerOfflineMissingTransaction" name="registerOfflineMissingTransaction"/>
+ </message>
+ <message name="MissingTransaction_getProgramRefrencesResponse">
+  <part element="tns:getProgramRefrencesResponse" name="getProgramRefrencesResponse"/>
+ </message>
+ <message name="MissingTransaction_registerManualMissingTransactionResponse">
+  <part element="tns:registerManualMissingTransactionResponse" name="registerManualMissingTransactionResponse"/>
+ </message>
+ <portType name="MissingTransaction">
+  <operation name="confirmManualMissingTransaction" parameterOrder="confirmManualMissingTransaction">
+   <input message="tns:MissingTransaction_confirmManualMissingTransaction"/>
+   <output message="tns:MissingTransaction_confirmManualMissingTransactionResponse"/>
+  </operation>
+  <operation name="getProgramRefrences" parameterOrder="getProgramRefrences">
+   <input message="tns:MissingTransaction_getProgramRefrences"/>
+   <output message="tns:MissingTransaction_getProgramRefrencesResponse"/>
+  </operation>
+  <operation name="registerManualMissingTransaction" parameterOrder="registerManualMissingTransaction">
+   <input message="tns:MissingTransaction_registerManualMissingTransaction"/>
+   <output message="tns:MissingTransaction_registerManualMissingTransactionResponse"/>
+  </operation>
+  <operation name="registerOfflineMissingTransaction" parameterOrder="registerOfflineMissingTransaction">
+   <input message="tns:MissingTransaction_registerOfflineMissingTransaction"/>
+   <output message="tns:MissingTransaction_registerOfflineMissingTransactionResponse"/>
+  </operation>
+ </portType>
+ <binding name="MissingTransactionBinding" type="tns:MissingTransaction">
+  <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="confirmManualMissingTransaction">
+   <soap:operation soapAction=""/>
+   <input>
+    <soap:body use="literal"/>
+   </input>
+   <output>
+    <soap:body use="literal"/>
+   </output>
+  </operation>
+  <operation name="getProgramRefrences">
+   <soap:operation soapAction=""/>
+   <input>
+    <soap:body use="literal"/>
+   </input>
+   <output>
+    <soap:body use="literal"/>
+   </output>
+  </operation>
+  <operation name="registerManualMissingTransaction">
+   <soap:operation soapAction=""/>
+   <input>
+    <soap:body use="literal"/>
+   </input>
+   <output>
+    <soap:body use="literal"/>
+   </output>
+  </operation>
+  <operation name="registerOfflineMissingTransaction">
+   <soap:operation soapAction=""/>
+   <input>
+    <soap:body use="literal"/>
+   </input>
+   <output>
+    <soap:body use="literal"/>
+   </output>
+  </operation>
+ </binding>
+ <service name="MissingTransactionService">
+  <port binding="tns:MissingTransactionBinding" name="MissingTransactionPort">
+   <soap:address location="http://192.168.7.168:11080/sahand-authorizer-product-0.0.1-SNAPSHOT-authorizer-service-0.0.1-SNAPSHOT/MissingTransaction"/>
+  </port>
+ </service>
+</definitions>

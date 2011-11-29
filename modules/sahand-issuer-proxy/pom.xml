@@ -15,5 +15,11 @@
   <packaging>jar</packaging>
   <url>http://tss-dev.com</url>
 
-
+<dependencies>
+	   <dependency>
+			<groupId>com.sahand.common.util</groupId>
+			<artifactId>sahand-common-util</artifactId>
+			<version>${sahand-common.version}</version>
+	  </dependency>
+	</dependencies>
 </project>

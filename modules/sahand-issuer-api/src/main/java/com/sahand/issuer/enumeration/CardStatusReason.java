@@ -23,7 +23,7 @@ public enum CardStatusReason
 	}
 
 
-	public static CardStatusReason fromValue(byte values) {
+	public static CardStatusReason fromValue(int values) {
 		for (CardStatusReason value : values()) {
 			if (value.value == values)
 				return value;

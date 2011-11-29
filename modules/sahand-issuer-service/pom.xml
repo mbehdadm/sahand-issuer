@@ -31,7 +31,13 @@
 			<version>${sahand-issuer.version}</version>
 			<type>ejb</type>
 		</dependency>
-		
+		   
+		<dependency>
+      		<groupId>com.sahand.issuer</groupId>
+      	 	<artifactId>sahand-issuer-proxy</artifactId>
+		 	<version>${sahand-issuer.version}</version>
+		 	<type>jar</type>
+      	</dependency> 
      
      	<dependency>
 			<groupId>jboss.jbossws-spi</groupId>

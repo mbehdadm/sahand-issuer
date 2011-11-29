@@ -7,6 +7,8 @@ import java.util.Date;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
 
 import org.slf4j.Logger;
 
@@ -240,6 +242,23 @@ public class MemberCardManagementImpl {
 			throw e;
 		}
 		return memberCard;
+	}
+	
+	public MemberCard getMemberCard(String pan, String isid, String pgid) {
+
+		try {
+			String q = " select MEMBRCARD.* from MEMBRCARD,MEMBER where MEMBER.MMID=MEMBRCARD.MMID and MEMBER.ISID in "
+					+ "(select isid from PROGPARTNR where PROGPARTNR.pgid = :pgid and PROGPARTNR.PTTYPE=3 and isid= :isid)and MEMBRCARD.MCPAN= :pan";
+			Query query = entityManager.createNativeQuery(q, MemberCard.class);
+			query.setParameter("pgid", pgid);
+			query.setParameter("isid", isid);
+			query.setParameter("pan", pan);
+			return (MemberCard) (query.getSingleResult());
+		
+		} catch (NoResultException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	

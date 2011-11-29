@@ -139,13 +139,11 @@ public class ProgramManagementImpl {
 
 			entityManager.merge(program);
 
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new IssuerException("program.update.exception");
 
 		}
-		
 	}
 	
 	public void delete(Long programId) throws Exception {
