@@ -37,6 +37,7 @@ public class AuthorizerSetupProcessorImpl {
 	private SessionContext context;
 	@EJB
 	private MissingTransactionManagement missingTransactionManagement;
+	
 	private MissingTransaction missingTransaction;
 
 	/**
@@ -80,7 +81,7 @@ public class AuthorizerSetupProcessorImpl {
 	 * @param missingTransaction
 	 * @return
 	 */
-	private String confirm(MissingTransaction missingTransaction) {
+	private String confirm(MissingTransaction missingTransaction)throws Exception {
 
 		XMLGregorianCalendar xgc;
 		MissingTransactionService missingTransactionService = MissingTransactionProcessor

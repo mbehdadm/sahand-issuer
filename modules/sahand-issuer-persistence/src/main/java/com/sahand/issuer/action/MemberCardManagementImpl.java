@@ -244,7 +244,7 @@ public class MemberCardManagementImpl {
 		return memberCard;
 	}
 	
-	public MemberCard getMemberCard(String pan, String isid, String pgid) {
+	public MemberCard getMemberCard(String pan, String isid, String pgid)throws Exception {
 
 		try {
 			String q = " select MEMBRCARD.* from MEMBRCARD,MEMBER where MEMBER.MMID=MEMBRCARD.MMID and MEMBER.ISID in "
@@ -257,7 +257,10 @@ public class MemberCardManagementImpl {
 		
 		} catch (NoResultException e) {
 			e.printStackTrace();
-			return null;
+			throw new IssuerException("member.card.not.find");
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw e;
 		}
 	}
 

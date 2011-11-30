@@ -46,7 +46,22 @@ public class MissingTransactionManagement {
 		if (missingTransactionInformation == null)
 			missingTransactionInformation = new MissingTransactionInformation();
 		
+		missingTransactionInformation.setMissAmount(missingTransaction.getMissAmount());
+		missingTransactionInformation.setMissCardAcceptorId(missingTransaction.getMissCardAcceptorId());
+		missingTransactionInformation.setMissDateLocalTransaction(missingTransaction.getMissDateLocalTransaction());
+		missingTransactionInformation.setMissDescription(missingTransaction.getMissDescription());
+		missingTransactionInformation.setMissMTI(missingTransaction.getMissMTI());
+		missingTransactionInformation.setMissPan(missingTransaction.getMissPan());
+		missingTransactionInformation.setMissProcessCode(missingTransaction.getMissProcessCode());
+		missingTransactionInformation.setMissProgramId(missingTransaction.getMissProgramId());
+//		missingTransactionInformation.setMissProgramRefrenceData(missProgramRefrenceData)
+//		missingTransactionInformation.setMissStatus(missingTransaction.getMissStatus());
+		missingTransactionInformation.setMissStatusDate(missingTransaction.getMissStatusDate());
+		missingTransactionInformation.setMissTerminalId(missingTransaction.getMissTerminalId());
+		missingTransactionInformation.setMissTransactionDate(missingTransaction.getId().getMissTransactionDate());
+		missingTransactionInformation.setMissTransactionId(missingTransaction.getId().getMissTransactionId());
 		
+		return missingTransactionInformation;
 
 	}
 
@@ -75,7 +90,7 @@ public class MissingTransactionManagement {
 		return missingTransaction;
 	}
 	
-	public MissingTransaction create(MissingTransactionInformation missingTransactionInformation,ProcessCode processCode){
+	public MissingTransaction create(MissingTransactionInformation missingTransactionInformation,ProcessCode processCode)throws Exception{
 
 		MissingTransaction missingTransaction = null;
 		
@@ -99,7 +114,7 @@ public class MissingTransactionManagement {
 	}
 	
 	public MissingTransaction checkAndConvertFrom(MissingTransactionInformation missingTransactionInformation,MissingTransaction missingTransaction,
-			ProcessCode processCode,MissingTransactionStatus status) 
+			ProcessCode processCode,MissingTransactionStatus status)throws Exception 
 	{
 		if (missingTransaction == null)
 			missingTransaction = new MissingTransaction();
@@ -127,7 +142,7 @@ public class MissingTransactionManagement {
 		return missingTransaction;
 	}
 	
-	public boolean isMemberCardDependToInstitute(String pan, String isid, String pgid) {
+	public boolean isMemberCardDependToInstitute(String pan, String isid, String pgid)throws Exception {
 
 		MemberCard card = memberCardManagementImpl.getMemberCard(pan, isid , pgid);
 		if (card == null)
@@ -136,7 +151,7 @@ public class MissingTransactionManagement {
 			return  true;
 	}
 	
-	private boolean checkFactorNumber(MissingTransaction missingTransaction) {
+	private boolean checkFactorNumber(MissingTransaction missingTransaction) throws Exception{
 
 		TLVParse pars = new TLVParse();
 		String factor = pars.getTarget(missingTransaction.getMissProgramRefrenceData(),TLV.FactorNumber);
@@ -355,7 +370,7 @@ public class MissingTransactionManagement {
 	}
 	
 	
-	public MissingTransaction persist(MissingTransaction miss) {
+	public MissingTransaction persist(MissingTransaction miss)throws Exception {
 
 		logger.info(" persist MissingTransaction ");
 		try {
@@ -369,6 +384,7 @@ public class MissingTransactionManagement {
 			return miss;
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new IssuerException("MissingTransaction.persist.exception");
 		}
 	}
 	
@@ -417,19 +433,24 @@ public class MissingTransactionManagement {
 			throw e;
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new IssuerException("missingTransaction.find.exception");
+			throw new IssuerException("unkown.exception.occurred");
 		}
 	}
 	
-	public MissingTransaction find(MissingTransactionId missingTransactionId){
+	public MissingTransaction find(MissingTransactionId missingTransactionId)throws Exception{
 		try {
 		
 			MissingTransaction missingTransaction = null;
 			missingTransaction = entityManager.find(MissingTransaction.class,missingTransactionId);
-			
+			if (missingTransaction == null)
+				throw new IssuerException("MissingTransaction.not.found");
 			return missingTransaction;
+
+		}catch (IssuerException e) {
+			throw e;
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new IssuerException("unkown.exception.occurred");
 		}
 	}
 	
@@ -438,7 +459,7 @@ public class MissingTransactionManagement {
 		MissingTransaction missing = find(missingTransactionInformation);
 
 		if (missing.getMissStatus() == MissingTransactionStatus.confirmed.toValue()) 
-			throw new IssuerException("aren't.permission.delete.confirmedMissingTransaction");
+			throw new IssuerException("not.permission.delete.confirm");
 	
 		missing.setMissStatus(MissingTransactionStatus.suspended.toValue());
 		

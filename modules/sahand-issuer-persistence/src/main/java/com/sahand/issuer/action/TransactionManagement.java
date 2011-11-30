@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 
 import com.sahand.common.util.logger.SahandLogger;
 import com.sahand.issuer.enumeration.TLV;
+import com.sahand.issuer.exception.IssuerException;
 import com.sahand.issuer.model.Transaction;
 
 @Stateless
@@ -22,7 +23,7 @@ public class TransactionManagement {
 	@AcquirerRepository
 	EntityManager entityManager;
 	
-    public List<Transaction> checkUniqueFactorNum(String terminalId, String cardAcceptorId, String refrence) 
+    public List<Transaction> checkUniqueFactorNum(String terminalId, String cardAcceptorId, String refrence)throws Exception 
     {
 
 	// String termId = IsoType.hexStr2Str(terminalId.toString());
@@ -58,7 +59,7 @@ public class TransactionManagement {
 	catch (Exception e)
 	{
 	    e.printStackTrace();
-	
+	    throw new IssuerException("transactions.load.exception");
 	}
     }
 }

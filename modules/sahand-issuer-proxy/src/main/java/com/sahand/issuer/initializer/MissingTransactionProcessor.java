@@ -28,10 +28,10 @@ public class MissingTransactionProcessor implements Serializable{
 			try {
 				String urlPath ;
 				if(CommonConfigLoader.getConfiguration() == null )
-					urlPath = CommonConfigLoader.getConfiguration().getProperty("transaction-wsdl");
+					urlPath = CommonConfigLoader.getConfiguration().getProperty("missingTransaction-wsdl");
 				else{
 					CommonConfigLoader.defaultInit();
-					urlPath = CommonConfigLoader.getConfiguration_Default().getProperty("transaction-wsdl");
+					urlPath = CommonConfigLoader.getConfiguration_Default().getProperty("missingTransaction-wsdl");
 				}
 				URL url = new URL(urlPath);
 				logger.info("Administration Service URL : "+url);
