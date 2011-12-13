@@ -1,4 +1,4 @@
-package com.sahand.cms.entity;
+package com.sahand.issuer.model;
 
 
 // Generated Apr 23, 2008 10:37:13 AM by Hibernate Tools 3.2.1.GA

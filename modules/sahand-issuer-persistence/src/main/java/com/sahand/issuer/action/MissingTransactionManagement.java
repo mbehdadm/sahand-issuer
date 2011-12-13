@@ -9,10 +9,10 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.Query;
 
 import org.slf4j.Logger;
+
+import com.sahand.acquirer.action.AcquirerRepository;
 import com.sahand.common.util.logger.SahandLogger;
 import com.sahand.issuer.config.TLVParse;
 import com.sahand.issuer.data.MissingTransactionInformation;
@@ -136,13 +136,12 @@ public class MissingTransactionManagement {
 		missingTransaction.setMissStatusDate(new Date(System.currentTimeMillis()));
 		missingTransaction.setMissDateLocalTransaction(missingTransactionInformation.getMissDateLocalTransaction());
 		
-		if (!checkFactorNumber(missingTransaction))
-			throw new IssuerException("duplicate.FactorNumber.exist");
+		checkFactorNumber(missingTransaction);
 		
 		return missingTransaction;
 	}
 	
-	public boolean isMemberCardDependToInstitute(String pan, String isid, String pgid)throws Exception {
+	public boolean isMemberCardDependToInstitute(String pan, String isid, Long pgid)throws Exception {
 
 		MemberCard card = memberCardManagementImpl.getMemberCard(pan, isid , pgid);
 		if (card == null)
@@ -151,7 +150,7 @@ public class MissingTransactionManagement {
 			return  true;
 	}
 	
-	private boolean checkFactorNumber(MissingTransaction missingTransaction) throws Exception{
+	private void checkFactorNumber(MissingTransaction missingTransaction) throws Exception{
 
 		TLVParse pars = new TLVParse();
 		String factor = pars.getTarget(missingTransaction.getMissProgramRefrenceData(),TLV.FactorNumber);
@@ -388,7 +387,7 @@ public class MissingTransactionManagement {
 		}
 	}
 	
-	public void update(MissingTransaction missingTransaction){
+	public void update(MissingTransaction missingTransaction)throws Exception{
 		try {
 
 			entityManager.merge(missingTransaction);
@@ -399,7 +398,7 @@ public class MissingTransactionManagement {
 		}
 	}
 	
-	public void delete(MissingTransaction missingTransaction) {
+	public void delete(MissingTransaction missingTransaction)throws Exception {
 
 		try {
 	
@@ -411,16 +410,16 @@ public class MissingTransactionManagement {
 		}
 	}
 	
-	public MissingTransaction find(MissingTransactionInformation missingTransactionInformation){
+	public MissingTransaction find(MissingTransactionInformation missingTransactionInformation)throws Exception{
 		
 		try {
 			MissingTransactionId id = new MissingTransactionId();
 
-			if (missingTransactionInformation.getMissTransactionId() == null) 
+/*			if (missingTransactionInformation.getMissTransactionId() == null) 
 				throw new IssuerException("Missingtransaction.id.is.Null");
 			
 			if (missingTransactionInformation.getMissTransactionDate() == null)
-				throw new IssuerException("Missingtransaction.date.is.Null");
+				throw new IssuerException("Missingtransaction.date.is.Null");*/
 
 			id.setMissTransactionDate(missingTransactionInformation.getMissTransactionDate());
 			id.setMissTransactionId(missingTransactionInformation.getMissTransactionId());
@@ -454,7 +453,7 @@ public class MissingTransactionManagement {
 		}
 	}
 	
-	public MissingTransaction edit(MissingTransactionInformation missingTransactionInformation){
+	public MissingTransaction edit(MissingTransactionInformation missingTransactionInformation)throws Exception{
 
 		MissingTransaction missing = find(missingTransactionInformation);
 

@@ -1,10 +1,10 @@
-package com.sahand.cms.entity;
+package com.sahand.issuer.model;
 
 import java.util.Date;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.NotNull;
 
 @Table(name="TRNSXNRSP")
 @Entity

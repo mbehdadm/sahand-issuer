@@ -45,8 +45,6 @@ public class ProgramParameterManagementImpl {
 		return programParameter;
 		
 	}
-
-	
 	
 	public ProgramParameter edit(ProgramParameterId id,ProgramParameterInformation programParameterInformation) throws Exception {
 

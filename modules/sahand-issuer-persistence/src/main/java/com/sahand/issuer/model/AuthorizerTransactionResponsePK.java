@@ -1,4 +1,4 @@
-package com.sahand.cms.entity;
+package com.sahand.issuer.model;
 
 import java.io.Serializable;
 import java.util.Date;

@@ -12,11 +12,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import org.slf4j.Logger;
 
 import com.sahand.common.util.logger.SahandLogger;
+import com.sahand.common.util.message.ResponseGenerator;
 import com.sahand.common.util.message.StatusCode;
 import com.sahand.issuer.config.DateConvertor;
 import com.sahand.issuer.data.MissingTransactionInformation;
 import com.sahand.issuer.enumeration.MissingTransactionStatus;
-import com.sahand.issuer.enumeration.RegisterarType;
 import com.sahand.issuer.exception.IssuerException;
 import com.sahand.issuer.initializer.MissingTransactionProcessor;
 import com.sahand.issuer.message.IssuerAuthorizerSetupRequest;
@@ -65,11 +65,11 @@ public class AuthorizerSetupProcessorImpl {
 					.generate(StatusCode.FAILED, "unkwnown.error.occured",
 							IssuerSetupResponse.class);
 		}
-
+		return response;
 	}
 
 	private String confirmeMissingTransaction(
-			MissingTransactionInformation missingTransactionInformation) {
+			MissingTransactionInformation missingTransactionInformation)throws Exception {
 
 		missingTransaction = missingTransactionManagement
 				.find(missingTransactionInformation);

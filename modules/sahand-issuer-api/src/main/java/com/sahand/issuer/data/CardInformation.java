@@ -5,8 +5,11 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
 public class CardInformation implements Serializable {
 
+	@NotNull(message="{card.pan.NOTNULL}",groups = CardIdValidation.class)
 	private String pan;
 	private BigDecimal floorLimit;
 	private BigDecimal openToBuy;
@@ -16,12 +19,15 @@ public class CardInformation implements Serializable {
 	private Date expirationDate;
 	private String panCvv;
 	private byte[] pinBlock;
+	@NotNull(message ="{card.pan.pvv.NOTNULL}")
 	private String panPvv;
 	private Date cycleBeginDate;
 	private Byte cycleLength;
 	private Integer serviceCode;
+	@NotNull(message ="{card.status.pvv.NOTNULL}")
 	private Byte statusReason;
 	private Date lastTransactionDate;
+	@NotNull(message ="{card.issue.reason.NOTNULL}")
 	private Byte issueReason;
 	private String track1;
 	private String track2;

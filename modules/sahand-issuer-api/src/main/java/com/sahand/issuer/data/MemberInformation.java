@@ -2,22 +2,40 @@ package com.sahand.issuer.data;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import com.sahand.acquirer.data.InstituteIdValidation;
 
 public class MemberInformation implements Serializable {
 
 	//member
+	@NotNull(message = "{member.id.NOTNULL}",groups = MemberIdValidation.class)
 	private Long memberId;
+	
+	@Size(max = 50,message="{member.latin.name.LENGTH}")
+	@NotNull(message = "{member.latin.name.NOTNULL}")
 	private String latinName;
+	
+	@Size(max = 40 , message = "{member.login.password.LENGTH} {max}")
 	private String loginPassword;
+	
+	@Size(max = 20 , message = "{member.login.user.LENGTH} {max}")
 	private String loginUser;
+	
+	@Size(max = 50 , message = "{member.name.LENGTH} {max}")
+	@NotNull(message = "{member.name.NOTNULL}")
 	private String name;
+	
+	@NotNull(message = "{member.status.NOTNULL}")
 	private Byte status;
 	private Date statusDate;
 	private Byte type;
+	
+	@NotNull(message ="{member.institue.id.NOTNULL}",groups=InstituteIdValidation.class)
 	private String instituteId;
 	//member info
 	private String birthcity;

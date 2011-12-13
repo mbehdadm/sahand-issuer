@@ -30,7 +30,7 @@ public class MissingTransaction implements java.io.Serializable, Cloneable
     private Integer missMTI;
     private Integer missProcessCode;
     private String missProgramRefrenceData;
-    private Integer missProgramId;
+    private Long missProgramId;
     private Date missDateLocalTransaction;
     
     /**
@@ -309,7 +309,7 @@ public class MissingTransaction implements java.io.Serializable, Cloneable
      */
     @Column(name = "MISPROGID", nullable = false, length = 6, scale = 0)
     @NotNull
-    public Integer getMissProgramId()
+    public Long getMissProgramId()
     {
 
 	return missProgramId;
@@ -319,7 +319,7 @@ public class MissingTransaction implements java.io.Serializable, Cloneable
      * @param missProgramId
      *            the missProgramId to set
      */
-    public void setMissProgramId(Integer programId)
+    public void setMissProgramId(Long programId)
     {
 
 	this.missProgramId = programId;

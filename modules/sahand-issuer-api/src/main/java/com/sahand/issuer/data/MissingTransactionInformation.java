@@ -1,31 +1,54 @@
 package com.sahand.issuer.data;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class MissingTransactionInformation {
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+
+import com.sahand.issuer.enumeration.MissingTransactionStatus;
+
+public class MissingTransactionInformation implements Serializable{
     
     // /////////////////
     // /// fields /// //
     // /////////////////
     
+	@Max(value=999999 ,message="{missing.id.LENGTH}")
+	@NotNull(message = "{missing.id.NOTNULL}" ,groups=MissingTransactionIdValidation.class)
     private Long missTransactionId;
+	
+	@NotNull(message = "{missing.date.NOTNULL}" ,groups=MissingTransactionIdValidation.class)
     private Date missTransactionDate;
-    private Long transactionid;
+    
+	private Long transactionid;
     private Date transactionDate;
     
-    //MissingTransactionStatusEnum enum 
-    private Integer missStatus;
-    
+    private MissingTransactionStatus missStatus;
     private Date missStatusDate;
+    
+    @NotNull(message = "{missing.pan.NOTNULL}" )
     private String missPan;
+    
+    @NotNull(message = "{missing.acceptor.id.NOTNULL}" )
     private String missCardAcceptorId;
+    
     private String missTerminalId;
+    
+    @NotNull(message = "{missing.description.NOTNULL}" )
     private String missDescription;
+    
+    @NotNull(message = "{missing.amount.NOTNULL}" )
     private Double missAmount;
+    
     private Integer missMTI;
     private Integer missProcessCode;
     private String missProgramRefrenceData;
-    private Integer missProgramId;
+    
+    @NotNull(message = "{missing.program.id.NOTNULL}" )
+    private Long missProgramId;
+    
+    @NotNull(message = "{missing.date.local.NOTNULL}" )
     private Date missDateLocalTransaction;
     
     private String factorNumber;
@@ -141,7 +164,7 @@ public class MissingTransactionInformation {
     /**
      * @return the missStatus
      */
-    public Integer getMissStatus()
+    public MissingTransactionStatus getMissStatus()
     {
 
 	return missStatus;
@@ -151,7 +174,7 @@ public class MissingTransactionInformation {
      * @param missStatus
      *            the missStatus to set
      */
-    public void setMissStatus(Integer missStatus)
+    public void setMissStatus(MissingTransactionStatus missStatus)
     {
 
 	this.missStatus = missStatus;
@@ -331,7 +354,7 @@ public class MissingTransactionInformation {
     /**
      * @return the missProgramId
      */
-    public Integer getMissProgramId()
+    public Long getMissProgramId()
     {
 
 	return missProgramId;
@@ -341,7 +364,7 @@ public class MissingTransactionInformation {
      * @param missProgramId
      *            the missProgramId to set
      */
-    public void setMissProgramId(Integer missProgramId)
+    public void setMissProgramId(Long missProgramId)
     {
 
 	this.missProgramId = missProgramId;

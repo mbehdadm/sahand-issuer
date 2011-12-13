@@ -4,15 +4,15 @@ import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
-import javax.swing.DebugGraphics;
 
 import org.slf4j.Logger;
 
-import com.sahand.common.util.message.ResponseGenerator;
+import com.sahand.acquirer.data.InstituteInformation;
+import com.sahand.common.util.enumeration.OperationType;
 import com.sahand.common.util.logger.SahandLogger;
+import com.sahand.common.util.message.ResponseGenerator;
 import com.sahand.common.util.message.StatusCode;
 import com.sahand.issuer.data.MissingTransactionInformation;
-import com.sahand.issuer.data.ProgramInformation;
 import com.sahand.issuer.enumeration.ProcessCode;
 import com.sahand.issuer.enumeration.RegisterarType;
 import com.sahand.issuer.exception.IssuerException;
@@ -45,7 +45,7 @@ public class MissingSetupProcessorImpl {
 				InstituteInformation instituteInformation = request.getInstitute();
 
 				logger.info(" registerar type : " + registerarType);
-
+				
 				if (registerarType == RegisterarType.INSTITUT)
 					missingTransactionManagement.isMemberCardDependToInstitute(
 							missingTransactionInformation.getMissPan(),
@@ -73,9 +73,10 @@ public class MissingSetupProcessorImpl {
 			context.setRollbackOnly();
 			response = (IssuerAuthorizerSetupResponse)ResponseGenerator.generate(StatusCode.FAILED,"unkwnown.error.occured",IssuerSetupResponse.class);
 		}
+		return response;
 	}
 	
-	private MissingTransactionInformation createMissingTransaction(MissingTransactionInformation missingTransactionInformation,ProcessCode processCode){
+	private MissingTransactionInformation createMissingTransaction(MissingTransactionInformation missingTransactionInformation,ProcessCode processCode)throws Exception{
 		
 		missingTransaction = missingTransactionManagement.create(missingTransactionInformation,processCode);
 		logger.debug(missingTransaction.toString());
@@ -84,7 +85,7 @@ public class MissingSetupProcessorImpl {
 		return missingTransactionInformation;
 	}
 	
-	private MissingTransactionInformation updateMissingTransaction(MissingTransactionInformation missingTransactionInformation){
+	private MissingTransactionInformation updateMissingTransaction(MissingTransactionInformation missingTransactionInformation)throws Exception{
 		
 		missingTransaction = missingTransactionManagement.edit(missingTransactionInformation);
 		logger.debug(missingTransaction.toString());
@@ -94,7 +95,7 @@ public class MissingSetupProcessorImpl {
 	
 	}
 	
-	private void deleteMissingTransaction(MissingTransactionInformation missingTransactionInformation){
+	private void deleteMissingTransaction(MissingTransactionInformation missingTransactionInformation)throws Exception{
 		
 		missingTransaction = missingTransactionManagement.find(missingTransactionInformation);
 		logger.debug(missingTransaction.toString());

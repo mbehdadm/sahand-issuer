@@ -1,4 +1,4 @@
-package com.sahand.cms.entity;
+package com.sahand.issuer.model;
 
 import java.util.Date;
 
@@ -10,9 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.NotNull;
-import org.hibernate.validator.Range;
 
 @Entity
 @Table(name="AUTHRSP")

@@ -1,5 +1,6 @@
 package com.sahand.issuer.message;
 
+import com.sahand.acquirer.data.InstituteInformation;
 import com.sahand.common.util.message.RequestHeader;
 import com.sahand.issuer.data.MissingTransactionInformation;
 import com.sahand.issuer.enumeration.RegisterarType;

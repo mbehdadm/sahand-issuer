@@ -3,6 +3,7 @@ package com.sahand.issuer.service;
 import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.ws.WebServiceContext;
@@ -16,12 +17,14 @@ import com.sahand.common.util.logger.SahandLogger;
 import com.sahand.issuer.action.CardSetupProcessorImpl;
 import com.sahand.issuer.action.MemberSetupProcessorImpl;
 import com.sahand.issuer.action.ProgramSetupProcessorImpl;
+import com.sahand.issuer.action.ValidationMissingSetupAuditor;
 import com.sahand.issuer.message.IssuerSetupRequest;
 import com.sahand.issuer.message.IssuerSetupResponse;
 
 @Stateless
 @WebServlet
 @WebContext(contextRoot="switch-issuer")
+@Interceptors(/*Login,*/ValidationMissingSetupAuditor.class/*,authenticate*/)
 public class IssuerSetupImpl implements IssuerSetup {
 
 	private static Logger logger = SahandLogger.getSahandLogger(IssuerSetupImpl.class);

@@ -4,77 +4,58 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import com.sahand.acquirer.data.InstituteIdValidation;
+
 public class ProgramPartnerInformation implements Serializable {
 
-    private Long programId;
-    private String name;
-    private String displayName;
-    private String description;
-    private String rules;
-    private String limitation;
-	
-    private List<ProgramParameterInformation> parameterInformations = new ArrayList<ProgramParameterInformation>();
-	
-    //generate type
-    private boolean autoGenerate;
     
-	public Long getProgramId() {
-		return programId;
-	}
-	public void setProgramId(Long programId) {
-		this.programId = programId;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getDisplayName() {
-		return displayName;
-	}
-	public void setDisplayName(String displayName) {
-		this.displayName = displayName;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public String getRules() {
-		return rules;
-	}
-	public void setRules(String rules) {
-		this.rules = rules;
-	}
-	public String getLimitation() {
-		return limitation;
-	}
-	public void setLimitation(String limitation) {
-		this.limitation = limitation;
-	}
+	@NotNull(message = "{institute.id.NOTNULL}",groups = partnersValidation.class)
+	private String institueId;
 	
-	public boolean isAutoGenerate() {
-		return autoGenerate;
+	@Size(max = 99 ,message = "{program.partner.type.LENGTH} {max}",groups = partnersValidation.class)
+	@NotNull(message = "{program.partner.type.NOTNULL}",groups = partnersValidation.class)
+    private Integer partnerType;
+	
+    private Long feeSchemeId;
+	
+ 
+	public String getInstitueId() {
+		return institueId;
 	}
-	public void setAutoGenerate(boolean autoGenerate) {
-		this.autoGenerate = autoGenerate;
+
+
+	public void setInstitueId(String institueId) {
+		this.institueId = institueId;
 	}
-	public List<ProgramParameterInformation> getParameterInformations() {
-		return parameterInformations;
+
+
+	public Integer getPartnerType() {
+		return partnerType;
 	}
-	public void setParameterInformations(
-			List<ProgramParameterInformation> parameterInformations) {
-		this.parameterInformations = parameterInformations;
+
+
+	public void setPartnerType(Integer partnerType) {
+		this.partnerType = partnerType;
 	}
+
+
+	public Long getFeeSchemeId() {
+		return feeSchemeId;
+	}
+
+
+	public void setFeeSchemeId(Long feeSchemeId) {
+		this.feeSchemeId = feeSchemeId;
+	}
+
 	@Override
 	public String toString() {
-		return "ProgramInformation [programId=" + programId + ", autoGenerate="
-				+ autoGenerate + ", name=" + name + ", displayName="
-				+ displayName + ", description=" + description + ", rules="
-				+ rules + ", limitation=" + limitation
-				+ ", parameterInformations=" + parameterInformations + "]";
+		return "ProgramPartnerInformation [institueId=" + institueId
+				+ ", partnerType=" + partnerType + ", feeSchemeId="
+				+ feeSchemeId + "]";
 	}
 	
 	

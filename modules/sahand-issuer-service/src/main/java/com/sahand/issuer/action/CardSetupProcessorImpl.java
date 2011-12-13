@@ -176,7 +176,6 @@ public class CardSetupProcessorImpl {
 	}
 
 
-
 	public InstituteInformation editCreditOrganization(
 			InstituteInformation instituteInformation) throws Exception{
 		institute = creditOrganizationManagement.edit(instituteInformation);

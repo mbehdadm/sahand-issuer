@@ -103,7 +103,7 @@ public class MemberSetupProcessorImpl {
 		}catch (Exception e) {
 			e.printStackTrace();
 			context.setRollbackOnly();
-			response = (IssuerSetupResponse)ResponseGenerator.generate(StatusCode.FAILED,"unkwnown.error.occured",IssuerSetupResponse.class);
+			response = (IssuerSetupResponse)ResponseGenerator.generate(StatusCode.FAILED,"unknown.error.occured",IssuerSetupResponse.class);
 		}
 		return response;
 	}

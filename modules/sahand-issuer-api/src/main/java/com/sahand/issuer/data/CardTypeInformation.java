@@ -2,17 +2,42 @@ package com.sahand.issuer.data;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class CardTypeInformation implements Serializable {
 
+	
+	@NotNull( message="{card.type.id.NOTNULL}" ,groups=CardTypeIdValidation.class)
 	private Integer id;
+	
+	@Size(max=30,message="{card.type.pin.format.LENGTH} {max}")
 	private String panFormat;
+	
+	@Max(value = 99,message="{card.type.pin.encription.MAX} {value}")
+	@NotNull(message = "{card.type.pin.encryption.NOTNULL}")
 	private Byte pinEncrytion;
+	
+	
+	@Max(value = 99,message="{card.type.pin.format.MAX} {value}")
+	@NotNull(message = "{card.type.pin.format.NOTNULL}")
 	private Byte pinFormat;
+	
 	private Byte authorization;
 	private Byte authentication;
+	
+	@NotNull(message="{card.type.application.NOTNULL}")
 	private Integer application;
+	
+	@Max(value = 999,message="{card.type.service.code.MAX} {value}")
+	@NotNull(message="{card.type.service.code.NOTNULL}")
 	private Short defaultServiceCode;
+	
+	@Size(max=2,message="{card.type.date.format.LENGTH}{max}")
+	@NotNull(message="{card.type.date.format.NOTNULL}")
 	private Byte trackDataFormat;
+	@NotNull(message="{card.type.description.NOTNULL}")
 	private String description;
 	//generate type
 	private boolean autoGenerate;

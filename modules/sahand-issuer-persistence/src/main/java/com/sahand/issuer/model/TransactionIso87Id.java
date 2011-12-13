@@ -1,6 +1,7 @@
-package com.sahand.cms.entity;
+package com.sahand.issuer.model;
 
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -8,7 +9,7 @@ import javax.persistence.Embeddable;
 
 
 @Embeddable
-public class TransactionIso87Id implements java.io.Serializable {
+public class TransactionIso87Id implements Serializable {
 
 	private Long txunqid;
 	private Date txreqdt;

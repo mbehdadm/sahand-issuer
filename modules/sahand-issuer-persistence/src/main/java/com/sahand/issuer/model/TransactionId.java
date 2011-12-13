@@ -1,11 +1,11 @@
-package com.sahand.cms.entity;
+package com.sahand.issuer.model;
 
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.NotNull;
 
 
 

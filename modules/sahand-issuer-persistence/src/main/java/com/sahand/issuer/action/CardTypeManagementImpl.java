@@ -57,8 +57,6 @@ public class CardTypeManagementImpl {
 		return cardType;
 		
 	}
-
-	
 	
 	public CardType edit(CardTypeInformation cardTypeInformation) throws Exception {
 

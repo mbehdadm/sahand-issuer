@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import org.slf4j.Logger;
 
+import com.sahand.acquirer.action.AcquirerRepository;
 import com.sahand.common.util.logger.SahandLogger;
 import com.sahand.issuer.enumeration.TLV;
 import com.sahand.issuer.exception.IssuerException;
@@ -30,6 +31,7 @@ public class TransactionManagement {
 	// String acceptorId = IsoType.hexStr2Str(cardAcceptorId.toString());
 	String len = String.format("%02d", refrence.length());
 	String ref = "%" + TLV.FactorNumber.toValue() + len + refrence + "%";
+	logger.info("refrence for factor number :"+ref);
 	try
 	{
 	    Query query = entityManager.createNativeQuery(" select trnsxn.* from" + "	(" + "	 select  " + "		trn87.TXUNQID, " + "         trn87.TXREQDT  "
